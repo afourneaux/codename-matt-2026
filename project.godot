@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="codename-matt-2026"
+run/main_scene="uid://bj0ui3ss1qrc3"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
