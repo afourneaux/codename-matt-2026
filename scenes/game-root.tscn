@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8bc0awnutnw1"]
 
 [ext_resource type="Script" uid="uid://d3326ck5oqdsm" path="res://scripts/dialogue/dialogue_box.gd" id="1_ky4iy"]
-[ext_resource type="Texture2D" uid="uid://dqa8mm3ntos53" path="res://assets/sprites/Speech_Bubble.png" id="2_jcw77"]
+[ext_resource type="Texture2D" uid="uid://1vmdhyp5gy3s" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="2_jcw77"]
 [ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_ky4iy"]
 [ext_resource type="Texture2D" uid="uid://bm2dxanflxdxd" path="res://assets/sprites/Todo_list.png" id="4_rckx3"]
 [ext_resource type="PackedScene" uid="uid://cycg65w1tnflm" path="res://scenes/todo/todo-item.tscn" id="5_rckx3"]
@@ -105,28 +105,39 @@ script = SubResource("GDScript_rckx3")
 [node name="DialogueBox" type="CanvasLayer" parent="UI" unique_id=1761053783]
 script = ExtResource("1_ky4iy")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox" unique_id=1118358105]
-offset_right = 50.0
-offset_bottom = 50.0
-texture = ExtResource("2_jcw77")
-region_rect = Rect2(7.648899, 13.655455, 22.032873, 18.528254)
-patch_margin_left = 3
-patch_margin_top = 2
-patch_margin_right = 3
-patch_margin_bottom = 5
+[node name="MarginContainer" type="MarginContainer" parent="UI/DialogueBox" unique_id=469170899]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 147.0
+grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/DialogueBox/NinePatchRect" unique_id=1158113397]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox/MarginContainer" unique_id=1118358105]
+layout_mode = 2
+texture = ExtResource("2_jcw77")
+region_rect = Rect2(0.32389474, 0.4443102, 22.235708, 15.931769)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DialogueBox/MarginContainer/NinePatchRect" unique_id=1158113397]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -75.0
-offset_right = 75.0
-offset_bottom = 50.0
-grow_horizontal = 2
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -41.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_ky4iy")
 bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [node name="Todo" type="NinePatchRect" parent="UI" unique_id=1555625326]
 layout_mode = 1
