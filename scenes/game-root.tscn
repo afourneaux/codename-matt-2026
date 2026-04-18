@@ -1,7 +1,31 @@
 [gd_scene format=3 uid="uid://c8bc0awnutnw1"]
 
+[ext_resource type="Texture2D" uid="uid://1vmdhyp5gy3s" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="1_0fvj0"]
 [ext_resource type="Script" uid="uid://d3326ck5oqdsm" path="res://scripts/dialogue/dialogue_box.gd" id="1_ky4iy"]
+[ext_resource type="Texture2D" uid="uid://dqa8mm3ntos53" path="res://assets/sprites/Speech_Bubble.png" id="2_jcw77"]
 [ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_ky4iy"]
+
+[sub_resource type="GDScript" id="GDScript_jcw77"]
+resource_name = "GameRoot"
+script/source = "extends Node
+
+var task_list = [
+	\"task_string1\"
+]
+var task_completion = []
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	# TODO - call based on a signal from UI?
+	for task in task_list:
+		task_completion.append(false)
+	$World.start_game()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
 resource_name = "World"
@@ -10,11 +34,13 @@ script/source = "extends Node2D
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var active_room: Node2D
 
+	
+func start_game():
+	change_room(-1, 0)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#TODO Call from \"Start game\" logic
-	change_room(-1, 0)
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,37 +51,86 @@ func change_room(door_source: int, room_id: int):
 		active_room.queue_free()
 	active_room = Factory.create_room(room_id, door_source)
 	active_room.room_changed.connect(change_room)
-	add_child(active_room)
+	active_room.character.on_interact.connect(on_interact)
+	call_deferred(\"add_child\", active_room)
+
+func on_interact():
+	if active_room.interactible == -1:
+		return
+	print(\"interacting with %s\" % active_room.interactible)
+	# TODO - launch interactible minigame based on the contents of active_room.interactible
 "
 
 [node name="GameRoot" type="Node" unique_id=527814795]
+script = SubResource("GDScript_jcw77")
 
 [node name="World" type="Node2D" parent="." unique_id=202932297]
 script = SubResource("GDScript_wnm2b")
 
 [node name="UI" type="Control" parent="." unique_id=1162712531]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DialogueBox" type="CanvasLayer" parent="UI" unique_id=1761053783]
 script = ExtResource("1_ky4iy")
 
-[node name="Panel" type="Panel" parent="UI/DialogueBox" unique_id=1495545994]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 150.0
-offset_bottom = 2.0
-grow_vertical = 2
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox" unique_id=1118358105]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("2_jcw77")
+region_rect = Rect2(7.648899, 13.655455, 22.032873, 18.528254)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/DialogueBox" unique_id=1158113397]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -23.0
-offset_right = 150.0
-offset_bottom = 27.0
-grow_vertical = 2
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DialogueBox/NinePatchRect" unique_id=1158113397]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_right = 75.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_ky4iy")
 bbcode_enabled = true
+
+[node name="Todo" type="NinePatchRect" parent="UI" unique_id=1555625326]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0fvj0")
+region_rect = Rect2(0, 0, 22.958042, 19)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="Title" type="RichTextLabel" parent="UI/Todo" unique_id=1328379376]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 31.465
+offset_bottom = 54.465004
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_ky4iy")
+theme_override_font_sizes/normal_font_size = 40
+text = "#TODO"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
