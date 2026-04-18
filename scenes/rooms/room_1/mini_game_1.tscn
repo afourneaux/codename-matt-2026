@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://c1j5sag8qhj02"]
 
-[ext_resource type="Script" uid="uid://bn860jup7tsem" path="res://scenes/rooms/room_1/mini_game_1.gd" id="1_77cm3"]
+[sub_resource type="GDScript" id="GDScript_77cm3"]
+script/source = "extends Node2D
+
+signal completed
+
+func _ready() -> void:
+	find_child(\"iv\").potato_ived.connect(_on_potato_ived)
+	
+func _on_potato_ived():
+	print(\"mini game completed\")
+	completed.emit()
+"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hy0nb"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -11,12 +22,54 @@ size = Vector2(100, 100)
 [sub_resource type="LabelSettings" id="LabelSettings_28b7v"]
 font_size = 37
 
+[sub_resource type="GDScript" id="GDScript_3l8m7"]
+script/source = "extends Area2D
+
+var mouse_over = false
+var dragging = false
+var over_potato = false
+signal potato_ived
+
+func _ready():
+	connect(\"mouse_entered\", _on_mouse_entered)
+	connect(\"mouse_exited\", _on_mouse_exited)
+	connect(\"area_entered\", _on_area_entered)
+	connect(\"area_exited\", _on_area_exited)
+
+	set_process_unhandled_input(true)
+
+func _unhandled_input(event):
+	if mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		dragging = true
+	elif mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+		dragging = false
+		if over_potato:
+			potato_ived.emit()
+	elif event is InputEventMouseMotion and dragging:
+		position = event.position
+		
+
+func _on_mouse_entered():
+	self.mouse_over = true
+
+func _on_mouse_exited():
+	self.mouse_over = false
+	
+func _on_area_entered(area):
+	if area.name == \"potato\":
+		over_potato = true
+
+func _on_area_exited(area):
+	if area.name == \"potato\":
+		over_potato = false
+"
+
 [node name="MiniGame1" type="Node2D" unique_id=859721148]
-script = ExtResource("1_77cm3")
+script = SubResource("GDScript_77cm3")
 
 [node name="background" type="Sprite2D" parent="." unique_id=740407016]
 region_enabled = true
-region_rect = Rect2(0, 0, 1280, 720)
+region_rect = Rect2(0, 0, 640, 360)
 
 [node name="potato" type="Area2D" parent="background" unique_id=587643905]
 position = Vector2(920, 224)
@@ -40,6 +93,7 @@ horizontal_alignment = 1
 
 [node name="iv" type="Area2D" parent="background" unique_id=504737311]
 position = Vector2(201, 176)
+script = SubResource("GDScript_3l8m7")
 
 [node name="iv_sprite" type="Sprite2D" parent="background/iv" unique_id=1777923234]
 texture = SubResource("CompressedTexture2D_hy0nb")
