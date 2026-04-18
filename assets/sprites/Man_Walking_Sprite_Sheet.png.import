@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqa8mm3ntos53"
-path="res://.godot/imported/Speech_Bubble.png-e509f4d1636915fc953b5e3b98fd30ea.ctex"
+uid="uid://p1t4tqn6jdp2"
+path="res://.godot/imported/Man_Walking_Sprite_Sheet.png-ce9d612797d23274a4a81a5921592751.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Speech_Bubble.png"
-dest_files=["res://.godot/imported/Speech_Bubble.png-e509f4d1636915fc953b5e3b98fd30ea.ctex"]
+source_file="res://assets/sprites/Man_Walking_Sprite_Sheet.png"
+dest_files=["res://.godot/imported/Man_Walking_Sprite_Sheet.png-ce9d612797d23274a4a81a5921592751.ctex"]
 
 [params]
 

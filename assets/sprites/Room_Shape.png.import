@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm2dxanflxdxd"
-path="res://.godot/imported/Todo_list.png-a1284c6310f4d81bbc913e8cb20a2ae4.ctex"
+uid="uid://d103gpreriq14"
+path="res://.godot/imported/Room_Shape.png-f68fc07c2e5e237a043cb43720508145.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Todo_list.png"
-dest_files=["res://.godot/imported/Todo_list.png-a1284c6310f4d81bbc913e8cb20a2ae4.ctex"]
+source_file="res://assets/sprites/Room_Shape.png"
+dest_files=["res://.godot/imported/Room_Shape.png-f68fc07c2e5e237a043cb43720508145.ctex"]
 
 [params]
 
