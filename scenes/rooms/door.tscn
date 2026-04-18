@@ -5,11 +5,11 @@ resource_name = "Door0"
 script/source = "extends Area2D
 signal door_entered
 
-var door_target: int = -1
+var door_id: int = -1
 
 
 func _body_entered(body: Node2D) -> void:
-	door_entered.emit(door_target)
+	door_entered.emit(door_id)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]

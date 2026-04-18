@@ -1,19 +1,22 @@
 [gd_scene format=3 uid="uid://wyqmux4hy5mx"]
 
+[ext_resource type="Texture2D" uid="uid://bl2fif2jojeg2" path="res://assets/sprites/Room shape.png" id="1_l8042"]
+
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
 resource_name = "RoomBase"
 script/source = "extends Node2D
 
 
 var room_id
-var room_links = []
+var room_links = {}
 var interactions = []
 var image
 
 var door_positions = {
-	0: Vector2(175, 300),
-	1: Vector2(550, 50),
-	2: Vector2(925, 300)
+	0: Vector2(450, 400),
+	1: Vector2(700, 400),
+	2: Vector2(700, 500),
+	3: Vector2(450, 500)
 }
 
 
@@ -21,17 +24,18 @@ var door_obj = preload(\"res://scenes/rooms/door.tscn\")
 
 func create_link(pos, target):
 	var door = door_obj.instantiate()
-	door.door_target = target
+	door.door_id = pos
 	door.position = door_positions[pos]
 	door.door_entered.connect(_on_door_entered)
 	$Doors.add_child(door)
-	
+	room_links[pos] = target
+
 func create_interaction(posx, posy, interaction_id):
-	room_links.append({\"posx\": posx, \"posy\": posy, \"id\": interaction_id})
+	interactions.append({\"posx\": posx, \"posy\": posy, \"id\": interaction_id})
 	# TODO: Instantiate object
 
-func _on_door_entered(door_target):
-	print(\"Entered door: %s\" % door_target)
+func _on_door_entered(door_id):
+	print(\"Entered door %s to room %s\" % [door_id, room_links[door_id]])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,57 +52,51 @@ func _process(delta: float) -> void:
 [node name="Room" type="Node2D" unique_id=426979371]
 script = SubResource("GDScript_wnm2b")
 
+[node name="BGImage" type="TextureRect" parent="." unique_id=825369605]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l8042")
+
 [node name="Walls" type="Node2D" parent="." unique_id=2053772779]
 
-[node name="Corner0" type="Area2D" parent="Walls" unique_id=1036621646]
-position = Vector2(275, 150)
-rotation = 2.3561945
+[node name="Corner0" type="StaticBody2D" parent="Walls" unique_id=75386286]
+position = Vector2(475.00003, 376)
+rotation = 2.7052603
 scale = Vector2(0.99999994, 0.99999994)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner0" unique_id=642653492]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner0/StaticBody2D" unique_id=804842876]
-shape = SubResource("WorldBoundaryShape2D_ab2as")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner0" unique_id=1679859034]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
-[node name="Corner1" type="Area2D" parent="Walls" unique_id=1527257151]
-position = Vector2(825, 150)
-rotation = -2.5307274
+[node name="Corner1" type="StaticBody2D" parent="Walls" unique_id=2093978491]
+position = Vector2(689, 380)
+rotation = 3.577925
 scale = Vector2(0.99999994, 0.99999994)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner1" unique_id=2105026049]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner1" unique_id=416735356]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner1/StaticBody2D" unique_id=900409834]
-shape = SubResource("WorldBoundaryShape2D_ab2as")
-
-[node name="Corner2" type="Area2D" parent="Walls" unique_id=1784473287]
-position = Vector2(275, 450)
-rotation = 0.7853982
+[node name="Corner2" type="StaticBody2D" parent="Walls" unique_id=821945150]
+position = Vector2(439, 518)
+rotation = 0.43633232
 scale = Vector2(0.99999994, 0.99999994)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner2" unique_id=1222923729]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner2" unique_id=539504750]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner2/StaticBody2D" unique_id=1314492110]
-shape = SubResource("WorldBoundaryShape2D_ab2as")
-
-[node name="Corner3" type="Area2D" parent="Walls" unique_id=1595982040]
-position = Vector2(825, 450)
-rotation = -0.9599312
+[node name="Corner3" type="StaticBody2D" parent="Walls" unique_id=555312295]
+position = Vector2(733.99994, 506)
+rotation = 5.846853
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner3" unique_id=1149827835]
-shape = SubResource("WorldBoundaryShape2D_ab2as")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner3" unique_id=1239828177]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner3/StaticBody2D" unique_id=792657409]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
 [node name="Doors" type="Node2D" parent="." unique_id=248849954]
