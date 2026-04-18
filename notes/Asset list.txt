@@ -1,0 +1,34 @@
+Assetes required
+
+Asset notes
+Isometric
+I dont need to do right and left they can do it themselves, I just do a small walking sequence
+
+FIND FONT
+
+OBJECTS
+	Main character with scrubs
+		STANDING
+		WALKING
+		LAYING DOWN
+		WINDOW WITH SCRUBS AND NAME TAG
+	Main character with hospital gown
+	Text bubble
+	Debug font
+	The chart
+		full of symptoms
+		patient #
+	The to do list that pulls up
+
+
+ROOMS 
+Starting room (cot, sink, mirror)
+Ending Room is the first room but slightly brighter and <makes more sense>
+Potato IV room
+
+
+
+
+1152/648
+
+
