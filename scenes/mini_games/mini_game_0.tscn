@@ -6,6 +6,8 @@ script/source = "extends Node2D
 signal completed
 
 func _ready() -> void:
+	if GameState.task_completion[0] or not GameState.task_completion[1]:
+		queue_free()
 	find_child(\"iv\").potato_ived.connect(_on_potato_ived)
 	
 func _on_potato_ived():

@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://cxm2p534m01le"]
 
-[ext_resource type="Texture2D" uid="uid://dq5cfloeyd5a6" path="res://icon.svg" id="1_ruwy3"]
-
 [sub_resource type="GDScript" id="GDScript_l8042"]
 resource_name = "Interactible"
 script/source = "extends StaticBody2D
@@ -9,18 +7,36 @@ signal on_approach
 signal on_leave
 
 var id
+var image
+var image_complete
+var blocker_scale
+
+func _ready():
+	set_image()
+	var circle = CircleShape2D.new()
+	circle.radius *= blocker_scale
+	$BlockerBox.shape = circle
+	EventBus.task_completed.connect(on_task_complete)
+
+func set_image(force_complete = false):
+	var _image = image_complete if force_complete or GameState.task_completion[id] else image
+	if _image == \"\":
+		queue_free()
+	$Sprite.texture = load(_image)
 
 func on_approached(body):
 	if body is CharacterBody2D:
-		print(\"Oh? You're approaching me?\")
 		$Sprite.modulate = Color.RED
 		on_approach.emit(id)
 
 func on_departed(body):
 	if body is CharacterBody2D:
-		print(\"farewell\")
 		$Sprite.modulate = Color.WHITE
 		on_leave.emit()
+
+func on_task_complete(_id):
+	if _id == id:
+		set_image(true)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
@@ -30,17 +46,17 @@ func on_departed(body):
 [node name="Interactible" type="StaticBody2D" unique_id=1940869371]
 script = SubResource("GDScript_l8042")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=494754863]
+[node name="BlockerBox" type="CollisionShape2D" parent="." unique_id=494754863]
+position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_ab2as")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1512814108]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_ruwy3")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1342033374]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1543916324]
-scale = Vector2(3, 3)
+position = Vector2(0, 25)
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_l8042")
 
 [connection signal="body_entered" from="Area2D" to="." method="on_approached"]
