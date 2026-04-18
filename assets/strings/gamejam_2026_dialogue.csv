@@ -5,3 +5,5 @@ room0_string1,[wave]Where am I?[/wave],[wave]Ou suis-je?[/wave]
 task_string1,Give [color=red]IV[/color] to patient,Donner un [color=red]IV[/color] au patient
 play_button,Play,Jouer
 quit_button,Quit,Quitter
+potato_string1,Who are you? You're not the usual nurse.,
+interact,Press E to interact,
