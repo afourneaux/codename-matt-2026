@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*uid://dte70k742tavp"
+GameState="*uid://o20p33f1une4"
 
 [display]
 

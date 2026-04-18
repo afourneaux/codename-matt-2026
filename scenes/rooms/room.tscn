@@ -24,10 +24,13 @@ func create_link(id, pos, target, enabled):
 	$Doors.add_child(door)
 	room_links[id] = target
 
-func create_interaction(posx, posy, interaction_id):
+func create_interaction(interaction_data):
 	var interactible = interactible_obj.instantiate()
-	interactible.position = Vector2(posx, posy)
-	interactible.id = interaction_id
+	interactible.position = interaction_data['position']
+	interactible.id = interaction_data['id']
+	interactible.image = interaction_data['image']
+	interactible.image_complete = interaction_data['image_complete']
+	interactible.blocker_scale = interaction_data.get('hitbox_scale', 2)
 	interactible.on_approach.connect(on_approach_interactible)
 	interactible.on_leave.connect(on_leave_interactible)
 	add_child(interactible)

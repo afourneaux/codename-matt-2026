@@ -1,0 +1,11 @@
+extends Node
+
+#0 IV / potato
+#1 potato pickup
+#2 mirror
+const TOTAL_INTERACTIBLES = 3
+static var task_completion = []
+
+func _ready():
+	for i in range(TOTAL_INTERACTIBLES):
+		task_completion.append(false)

@@ -7,16 +7,13 @@
 resource_name = "GameRoot"
 script/source = "extends Node
 
-var task_list = [
-	\"task_string1\"
-]
-var task_completion = []
+var task_list = {
+	0: \"task_string1\"
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# TODO - call based on a signal from UI?
-	for task in task_list:
-		task_completion.append(false)
 	update_task_list()
 	$UI.todo_opened.connect(update_task_list)
 	$World.start_game()
@@ -28,10 +25,10 @@ func _process(delta: float) -> void:
 	pass
 
 func update_task_list():
-	$UI.update_task_list(task_list, task_completion)
+	$UI.update_task_list(task_list)
 
 func _on_task_completed(task_id):
-	task_completion[task_id] = true
+	GameState.task_completion[task_id] = true
 "
 
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
@@ -74,6 +71,8 @@ func on_interact():
 				remove_child(mini_game_0)
 				EventBus.task_completed.emit(0)
 		)
+	elif active_room.interactible == 1:
+		EventBus.task_completed.emit(1)
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible
 "
@@ -89,25 +88,24 @@ var todo_item_obj = preload(\"res://scenes/todo/todo-item.tscn\")
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func update_task_list(task_list, task_completions):
+func update_task_list(task_list):
 	var index = 0
 	for child in $Todo/List.get_children():
 		child.queue_free()
 	for task in task_list:
 		var task_item = todo_item_obj.instantiate()
-		if task_completions[index]:
-			task_item.text = \"[s]%s[/s]\" % tr(task)
+		if GameState.task_completion[index]:
+			task_item.text = \"[s]%s[/s]\" % tr(task_list[task])
 		else:
-			task_item.text = task
+			task_item.text = task_list[task]
 		$Todo/List.add_child(task_item)
 		index += 1
-			
-	
+
+
 func _input(event):
 	if event.is_action_pressed(\"todo\"):
 		$Todo.change_state()
@@ -133,5 +131,4 @@ script = SubResource("GDScript_rckx3")
 [node name="DialogueBox" parent="UI" unique_id=894929606 instance=ExtResource("1_ky4iy")]
 
 [node name="Todo" parent="UI" unique_id=1561376941 instance=ExtResource("2_jcw77")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
