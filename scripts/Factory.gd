@@ -93,12 +93,40 @@ static var room_data = {
 	},
 	4: {
 		"links": {
-			3: 3,
-			0: 2
 		},
 		"interactions": [
+			{
+				# sink
+				"id": 4,
+				"position": Vector2(600, 350),
+				"hitbox_scale": 4,
+				"image": "res://assets/sprites/sink.png",
+				"image_complete": "res://assets/sprites/sink.png"
+			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"blockers": [
+			{
+				# bench
+				"position": Vector2(750, 500),
+				"hitbox_scale": 4
+			},
+			{
+				# curtain
+				"position": Vector2(450, 400),
+				"hitbox_scale": 1
+			},
+			{
+				# bed
+				"position": Vector2(380, 440),
+				"hitbox_scale": 4
+			},
+			{
+				# sink back
+				"position": Vector2(550, 350),
+				"hitbox_scale": 1
+			}
+		],
+		"image": "res://assets/sprites/room_1.png"
 	}
 }
 
