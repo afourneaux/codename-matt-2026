@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c8bc0awnutnw1"]
 
 [ext_resource type="Script" uid="uid://d3326ck5oqdsm" path="res://scripts/dialogue/dialogue_box.gd" id="1_ky4iy"]
-[ext_resource type="Texture2D" uid="uid://1vmdhyp5gy3s" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="2_jcw77"]
+[ext_resource type="Texture2D" uid="uid://dt6atkq3ec3w3" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="2_jcw77"]
 [ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_ky4iy"]
-[ext_resource type="Texture2D" uid="uid://bm2dxanflxdxd" path="res://assets/sprites/Todo_list.png" id="4_rckx3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/Todo_list.png" id="4_rckx3"]
 [ext_resource type="PackedScene" uid="uid://cycg65w1tnflm" path="res://scenes/todo/todo-item.tscn" id="5_rckx3"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
@@ -115,9 +115,9 @@ size_flags_horizontal = 3
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox/MarginContainer" unique_id=1118358105]
 layout_mode = 2
 texture = ExtResource("2_jcw77")
-region_rect = Rect2(0.32389474, 0.4443102, 22.235708, 15.931769)
-patch_margin_left = 2
-patch_margin_top = 2
+region_rect = Rect2(1.675991, 1.5686524, 42.539227, 30.45768)
+patch_margin_left = 3
+patch_margin_top = 3
 patch_margin_right = 2
 patch_margin_bottom = 2
 
