@@ -10,14 +10,28 @@ var room_links = []
 var interactions = []
 var image
 
+var door_positions = {
+	0: Vector2(175, 300),
+	1: Vector2(550, 50),
+	2: Vector2(925, 300)
+}
+
+
+var door_obj = preload(\"res://scenes/rooms/door.tscn\")
 
 func create_link(pos, target):
-	room_links.append({\"pos\": pos, \"target\": target})
-	# TODO: Instantiate object
+	var door = door_obj.instantiate()
+	door.door_target = target
+	door.position = door_positions[pos]
+	door.body_entered.connect(_on_door_entered)
+	$Doors.add_child(door)
 	
 func create_interaction(posx, posy, interaction_id):
 	room_links.append({\"posx\": posx, \"posy\": posy, \"id\": interaction_id})
 	# TODO: Instantiate object
+
+func _on_door_entered(door_obj):
+	print(\"Entered door: %s\" % door_obj.door_target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,8 +44,6 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ab2as"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
 
 [node name="Room" type="Node2D" unique_id=426979371]
 script = SubResource("GDScript_wnm2b")
@@ -70,21 +82,3 @@ rotation = -0.9599312
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
 [node name="Doors" type="Node2D" parent="." unique_id=248849954]
-
-[node name="Door0" type="Area2D" parent="Doors" unique_id=941685821]
-position = Vector2(175, 300)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door0" unique_id=1310044061]
-shape = SubResource("CircleShape2D_ab2as")
-
-[node name="Door1" type="Area2D" parent="Doors" unique_id=1903805225]
-position = Vector2(550, 50)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door1" unique_id=701688890]
-shape = SubResource("CircleShape2D_ab2as")
-
-[node name="Door2" type="Area2D" parent="Doors" unique_id=1738222004]
-position = Vector2(925, 300)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door2" unique_id=411263130]
-shape = SubResource("CircleShape2D_ab2as")
