@@ -6,6 +6,3 @@ What we tell the player
 	Their name
 
 What clues do we use?
-
-
-
