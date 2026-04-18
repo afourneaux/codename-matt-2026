@@ -68,8 +68,8 @@ grow_vertical = 2
 [node name="Walls" type="Node2D" parent="." unique_id=2053772779]
 
 [node name="Corner0" type="StaticBody2D" parent="Walls" unique_id=75386286]
-position = Vector2(475.00003, 376)
-rotation = 2.7052603
+position = Vector2(475, 370)
+rotation = 2.6703537
 scale = Vector2(0.99999994, 0.99999994)
 metadata/_edit_group_ = true
 
@@ -78,7 +78,7 @@ shape = SubResource("WorldBoundaryShape2D_ab2as")
 
 [node name="Corner1" type="StaticBody2D" parent="Walls" unique_id=2093978491]
 position = Vector2(689, 380)
-rotation = 3.577925
+rotation = 3.6302848
 scale = Vector2(0.99999994, 0.99999994)
 metadata/_edit_group_ = true
 
@@ -86,8 +86,8 @@ metadata/_edit_group_ = true
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
 [node name="Corner2" type="StaticBody2D" parent="Walls" unique_id=821945150]
-position = Vector2(439, 518)
-rotation = 0.43633232
+position = Vector2(439, 550)
+rotation = 0.4712389
 scale = Vector2(0.99999994, 0.99999994)
 metadata/_edit_group_ = true
 
@@ -95,8 +95,8 @@ metadata/_edit_group_ = true
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
 [node name="Corner3" type="StaticBody2D" parent="Walls" unique_id=555312295]
-position = Vector2(733.99994, 506)
-rotation = 5.846853
+position = Vector2(734, 540)
+rotation = 5.8119464
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner3" unique_id=1149827835]

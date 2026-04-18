@@ -4,13 +4,13 @@ extends Object
 
 static var room_obj = preload("res://scenes/rooms/room.tscn")
 static var character_obj = preload("res://scenes/player/player_character.tscn")
-const ROOM_CENTRE = Vector2(576,450)
+const ROOM_CENTRE = Vector2(576,400)
 
 static var door_positions = {
-	0: Vector2(450, 400),
+	0: Vector2(450, 420),
 	1: Vector2(700, 400),
-	2: Vector2(700, 500),
-	3: Vector2(450, 500)
+	2: Vector2(700, 520),
+	3: Vector2(450, 520)
 }
 
 static var room_data = {
@@ -21,7 +21,7 @@ static var room_data = {
 		},
 		"interactions": [
 		],
-		"image": "res://assets/sprites/Roomshape.png"
+		"image": "res://assets/sprites/Room_Shape.png"
 	},
 	1: {
 		"links": {
@@ -36,7 +36,7 @@ static var room_data = {
 				"posy": 350
 			}
 		],
-		"image": "res://assets/sprites/Roomshape.png"
+		"image": "res://assets/sprites/Room_Shape.png"
 	},
 	2: {
 		"links": {
@@ -45,7 +45,7 @@ static var room_data = {
 		},
 		"interactions": [
 		],
-		"image": "res://assets/sprites/Roomshape.png"
+		"image": "res://assets/sprites/Room_Shape.png"
 	},
 	3: {
 		"links": {
@@ -54,7 +54,7 @@ static var room_data = {
 		},
 		"interactions": [
 		],
-		"image": "res://assets/sprites/Roomshape.png"
+		"image": "res://assets/sprites/Room_Shape.png"
 	},
 	4: {
 		"links": {
@@ -63,7 +63,7 @@ static var room_data = {
 		},
 		"interactions": [
 		],
-		"image": "res://assets/sprites/Roomshape.png"
+		"image": "res://assets/sprites/Room_Shape.png"
 	}
 }
 
