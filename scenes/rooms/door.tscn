@@ -3,9 +3,13 @@
 [sub_resource type="GDScript" id="GDScript_ab2as"]
 resource_name = "Door0"
 script/source = "extends Area2D
-
+signal door_entered
 
 var door_target: int = -1
+
+
+func _body_entered(body: Node2D) -> void:
+	door_entered.emit(door_target)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
@@ -15,3 +19,5 @@ script = SubResource("GDScript_ab2as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1895631929]
 shape = SubResource("CircleShape2D_ab2as")
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]

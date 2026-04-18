@@ -23,15 +23,15 @@ func create_link(pos, target):
 	var door = door_obj.instantiate()
 	door.door_target = target
 	door.position = door_positions[pos]
-	door.body_entered.connect(_on_door_entered)
+	door.door_entered.connect(_on_door_entered)
 	$Doors.add_child(door)
 	
 func create_interaction(posx, posy, interaction_id):
 	room_links.append({\"posx\": posx, \"posy\": posy, \"id\": interaction_id})
 	# TODO: Instantiate object
 
-func _on_door_entered(door_obj):
-	print(\"Entered door: %s\" % door_obj.door_target)
+func _on_door_entered(door_target):
+	print(\"Entered door: %s\" % door_target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
