@@ -27,3 +27,7 @@ position = Vector2(9.536743e-07, 1)
 scale = Vector2(0.1640625, 0.16015628)
 sprite_frames = SubResource("SpriteFrames_auamg")
 animation = &"idle"
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1657211278]
+target_position = Vector2(45, 0)
+collide_with_areas = true
