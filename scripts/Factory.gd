@@ -30,11 +30,40 @@ static var room_data = {
 	},
 	1: {
 		"links": {
-			0: 0
+			0: 0,
+			1: 2,
+			2: 3
 		},
 		"interactions": [
 		],
-		"image": "res://icon.svg"
+		"image": "res://assets/sprites/Roomshape.png"
+	},
+	2: {
+		"links": {
+			3: 1,
+			2: 4
+		},
+		"interactions": [
+		],
+		"image": "res://assets/sprites/Roomshape.png"
+	},
+	3: {
+		"links": {
+			0: 1,
+			1: 4
+		},
+		"interactions": [
+		],
+		"image": "res://assets/sprites/Roomshape.png"
+	},
+	4: {
+		"links": {
+			3: 3,
+			0: 2
+		},
+		"interactions": [
+		],
+		"image": "res://assets/sprites/Roomshape.png"
 	}
 }
 
