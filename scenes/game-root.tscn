@@ -27,10 +27,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _input(event):
-	if event.is_action_pressed(\"todo\"):
-		$UI/Todo.visible = !$UI/Todo.visible
 "
 
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
@@ -86,6 +82,9 @@ func _process(delta: float) -> void:
 func update_task_list(task_list):
 	pass
 	
+func _input(event):
+	if event.is_action_pressed(\"todo\"):
+		$Todo.visible = !$Todo.visible
 "
 
 [node name="GameRoot" type="Node" unique_id=527814795]
@@ -172,3 +171,4 @@ grow_vertical = 2
 
 [node name="TodoItem" parent="UI/Todo/List" unique_id=1623680660 instance=ExtResource("5_rckx3")]
 layout_mode = 2
+scroll_active = false
