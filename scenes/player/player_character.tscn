@@ -61,19 +61,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eebfp"]
-size = Vector2(106, 54.875)
+size = Vector2(56, 25)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1295364437]
 script = ExtResource("1_eebfp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1017165411]
 position = Vector2(4.7822275, -3.5986323)
-scale = Vector2(3, 3.048)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_auamg")
 animation = &"walking"
 frame = 4
 frame_progress = 0.5115503
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634259441]
-position = Vector2(-2, 70.5625)
+position = Vector2(-3, 50)
 shape = SubResource("RectangleShape2D_eebfp")
