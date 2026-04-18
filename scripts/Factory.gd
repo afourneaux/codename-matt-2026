@@ -23,10 +23,32 @@ static var room_data = {
 			{
 				# sink
 				"id": 2,
-				"position": Vector2(580, 340),
+				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
 				"image": "res://assets/sprites/sink.png",
 				"image_complete": "res://assets/sprites/sink.png"
+			}
+		],
+		"blockers": [
+			{
+				# bench
+				"position": Vector2(750, 500),
+				"hitbox_scale": 4
+			},
+			{
+				# curtain
+				"position": Vector2(450, 400),
+				"hitbox_scale": 1
+			},
+			{
+				# bed
+				"position": Vector2(380, 440),
+				"hitbox_scale": 4
+			},
+			{
+				# sink back
+				"position": Vector2(550, 350),
+				"hitbox_scale": 1
 			}
 		],
 		"image": "res://assets/sprites/room_1.png"
@@ -67,8 +89,6 @@ static var room_data = {
 			0: 1,
 			1: 4
 		},
-		"interactions": [
-		],
 		"image": "res://assets/sprites/Room_Shape.png"
 	},
 	4: {
@@ -96,8 +116,10 @@ static func create_room(room_id: int, last_door_position: int):
 			data["links"][link], 
 			last_door_position == -1 or link != new_door_position
 		)
-	for interaction in data["interactions"]:
+	for interaction in data.get("interactions", []):
 		room.create_interaction(interaction)
+	for blocker in data.get("blockers", []):
+		room.create_blocker(blocker)
 	var character = character_obj.instantiate()
 	if last_door_position == -1:
 		character.position = ROOM_CENTRE

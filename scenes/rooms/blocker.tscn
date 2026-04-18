@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dy4kfqxx0hw7f"]
+
+[sub_resource type="GDScript" id="GDScript_ab2as"]
+resource_name = "Blocker"
+script/source = "extends StaticBody2D
+
+
+var blocker_scale
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$BlockerBox.shape.radius *= blocker_scale
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
+resource_local_to_scene = true
+
+[node name="Blocker" type="StaticBody2D" unique_id=1159104865]
+script = SubResource("GDScript_ab2as")
+
+[node name="BlockerBox" type="CollisionShape2D" parent="." unique_id=1137989326]
+shape = SubResource("CircleShape2D_ab2as")
