@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bj0ui3ss1qrc3"]
 
-[node name="game-root" type="Node" unique_id=527814795]
+[node name="GameRoot" type="Node" unique_id=527814795]
 
-[node name="world" type="Node2D" parent="." unique_id=202932297]
+[node name="World" type="Node2D" parent="." unique_id=202932297]
 
-[node name="ui" type="Control" parent="." unique_id=1162712531]
+[node name="UI" type="Control" parent="." unique_id=1162712531]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
