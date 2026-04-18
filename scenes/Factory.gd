@@ -17,7 +17,7 @@ static var room_data = {
 				"posy": 10
 			}
 		],
-		"image": "res://assets/sprites/Room Shape.png"
+		"image": "res://assets/sprites/Roomshape.png"
 	},
 	1: {
 		"links": {
