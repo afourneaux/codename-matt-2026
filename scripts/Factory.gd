@@ -8,7 +8,7 @@ const ROOM_CENTRE = Vector2(576,400)
 
 static var door_positions = {
 	0: Vector2(450, 420),
-	1: Vector2(700, 400),
+	1: Vector2(700, 420),
 	2: Vector2(700, 520),
 	3: Vector2(450, 520)
 }
@@ -17,7 +17,7 @@ static var room_data = {
 	# Room 0 - beginning / end room
 	0: {
 		"links": {
-			2: 1
+			1: 1
 		},
 		"interactions": [
 		],
@@ -26,14 +26,14 @@ static var room_data = {
 	1: {
 		"links": {
 			0: 0,
-			1: 2,
-			2: 3
+			#1: 2,
+			#2: 3
 		},
 		"interactions": [
 			{
 				"id": 0,
-				"posx": 576,
-				"posy": 350
+				"posx": 750,
+				"posy": 450
 			}
 		],
 		"image": "res://assets/sprites/Room_Shape.png"
@@ -75,7 +75,12 @@ static func create_room(room_id: int, last_door_position: int):
 	room.image = data["image"]
 	var new_door_position = (last_door_position + 2) % 4
 	for link in data["links"]:
-		room.create_link(link, door_positions[link], data["links"][link], link != new_door_position)
+		room.create_link(
+			link, 
+			door_positions[link], 
+			data["links"][link], 
+			last_door_position == -1 or link != new_door_position
+		)
 	for interaction in data["interactions"]:
 		room.create_interaction(interaction["posx"], interaction["posy"], interaction["id"])
 	var character = character_obj.instantiate()

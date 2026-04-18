@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ddu7gjrk70p2s"]
+
+[ext_resource type="Script" uid="uid://d3326ck5oqdsm" path="res://scripts/dialogue/dialogue_box.gd" id="1_eprfq"]
+[ext_resource type="Texture2D" uid="uid://dt6atkq3ec3w3" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="2_gm23c"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="3_erktn"]
+
+[node name="DialogueBox" type="CanvasLayer" unique_id=894929606]
+script = ExtResource("1_eprfq")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1762790057]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 147.0
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=1628029954]
+layout_mode = 2
+texture = ExtResource("2_gm23c")
+region_rect = Rect2(1.675991, 1.5686524, 42.539227, 30.45768)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/NinePatchRect" unique_id=1946951057]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -41.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_erktn")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1973928184]
+offset_right = 50.0
+offset_bottom = 50.0
+region_rect = Rect2(7.648899, 13.655455, 22.032873, 18.528254)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 5

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="codename-matt-2026"
-run/main_scene="uid://c8bc0awnutnw1"
+run/main_scene="uid://gq6epy8wcapt"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*uid://dte70k742tavp"
 
 [display]
 
