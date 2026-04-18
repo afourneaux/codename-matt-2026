@@ -55,6 +55,11 @@ position = Vector2(275, 150)
 rotation = 2.3561945
 scale = Vector2(0.99999994, 0.99999994)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner0" unique_id=642653492]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner0/StaticBody2D" unique_id=804842876]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner0" unique_id=1679859034]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
@@ -66,6 +71,11 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner1" unique_id=2105026049]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner1" unique_id=416735356]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner1/StaticBody2D" unique_id=900409834]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
 [node name="Corner2" type="Area2D" parent="Walls" unique_id=1784473287]
 position = Vector2(275, 450)
 rotation = 0.7853982
@@ -74,11 +84,21 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner2" unique_id=1222923729]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner2" unique_id=539504750]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner2/StaticBody2D" unique_id=1314492110]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
 [node name="Corner3" type="Area2D" parent="Walls" unique_id=1595982040]
 position = Vector2(825, 450)
 rotation = -0.9599312
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner3" unique_id=1149827835]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Corner3" unique_id=1239828177]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner3/StaticBody2D" unique_id=792657409]
 shape = SubResource("WorldBoundaryShape2D_ab2as")
 
 [node name="Doors" type="Node2D" parent="." unique_id=248849954]
