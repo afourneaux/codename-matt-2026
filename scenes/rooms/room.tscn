@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://wyqmux4hy5mx"]
+
+[sub_resource type="GDScript" id="GDScript_wnm2b"]
+resource_name = "RoomBase"
+script/source = "extends Node2D
+
+
+var room_id
+var room_links = []
+var interactions = []
+var image
+
+
+func create_link(pos, target):
+	room_links.append({\"pos\": pos, \"target\": target})
+	# TODO: Instantiate object
+	
+func create_interaction(posx, posy, interaction_id):
+	room_links.append({\"posx\": posx, \"posy\": posy, \"id\": interaction_id})
+	# TODO: Instantiate object
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ab2as"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
+
+[node name="Room" type="Node2D" unique_id=426979371]
+script = SubResource("GDScript_wnm2b")
+
+[node name="Walls" type="Node2D" parent="." unique_id=2053772779]
+
+[node name="Corner0" type="Area2D" parent="Walls" unique_id=1036621646]
+position = Vector2(275, 150)
+rotation = 2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner0" unique_id=1679859034]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
+[node name="Corner1" type="Area2D" parent="Walls" unique_id=1527257151]
+position = Vector2(825, 150)
+rotation = -2.5307274
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner1" unique_id=2105026049]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
+[node name="Corner2" type="Area2D" parent="Walls" unique_id=1784473287]
+position = Vector2(275, 450)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner2" unique_id=1222923729]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
+[node name="Corner3" type="Area2D" parent="Walls" unique_id=1595982040]
+position = Vector2(825, 450)
+rotation = -0.9599312
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Corner3" unique_id=1149827835]
+shape = SubResource("WorldBoundaryShape2D_ab2as")
+
+[node name="Doors" type="Node2D" parent="." unique_id=248849954]
+
+[node name="Door0" type="Area2D" parent="Doors" unique_id=941685821]
+position = Vector2(175, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door0" unique_id=1310044061]
+shape = SubResource("CircleShape2D_ab2as")
+
+[node name="Door1" type="Area2D" parent="Doors" unique_id=1903805225]
+position = Vector2(550, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door1" unique_id=701688890]
+shape = SubResource("CircleShape2D_ab2as")
+
+[node name="Door2" type="Area2D" parent="Doors" unique_id=1738222004]
+position = Vector2(925, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door2" unique_id=411263130]
+shape = SubResource("CircleShape2D_ab2as")
