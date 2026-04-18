@@ -5,12 +5,13 @@
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
 resource_name = "RoomBase"
 script/source = "extends Node2D
+signal room_changed
 
 
-var room_id
+var room_id: int
 var room_links = {}
 var interactions = []
-var image
+var image: String
 
 var door_positions = {
 	0: Vector2(450, 400),
@@ -36,9 +37,12 @@ func create_interaction(posx, posy, interaction_id):
 
 func _on_door_entered(door_id):
 	print(\"Entered door %s to room %s\" % [door_id, room_links[door_id]])
+	var new_position_index = (door_id + 2) % 4
+	room_changed.emit(door_positions[new_position_index], room_links[door_id])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$BGImage.texture = load(image)
 	pass # Replace with function body.
 
 

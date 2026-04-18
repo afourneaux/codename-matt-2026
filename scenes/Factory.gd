@@ -7,12 +7,9 @@ static var room_obj = preload("res://scenes/rooms/room.tscn")
 static var room_data = {
 	# Room 0 - beginning / end room
 	0: {
-		"links": [
-			{
-				"pos": 2,
-				"target": 1
-			}
-		],
+		"links": {
+			2: 1
+		},
 		"interactions": [
 			{
 				"id": 0,
@@ -20,15 +17,15 @@ static var room_data = {
 				"posy": 10
 			}
 		],
-		"image": "res://icon.svg"
+		"image": "res://assets/sprites/Room Shape.png"
 	},
 	1: {
-		"links": [
-			{
-				"position": 0,
-				"target": 0
-			}
+		"links": {
+			0: 0
+		},
+		"interactions": [
 		],
+		"image": "res://icon.svg"
 	}
 }
 
@@ -39,7 +36,7 @@ static func create_room(room_id: int):
 	room.room_id = room_id
 	room.image = data["image"]
 	for link in data["links"]:
-		room.create_link(link["pos"], link["target"])
+		room.create_link(link, data["links"][link])
 	for interaction in data["interactions"]:
 		room.create_interaction(interaction["posx"], interaction["posy"], interaction["id"])
 	return room
