@@ -54,7 +54,11 @@ script = ExtResource("1_ky4iy")
 offset_right = 50.0
 offset_bottom = 50.0
 texture = ExtResource("2_jcw77")
-region_rect = Rect2(7.7925425, 13.721229, 21.496445, 18.237309)
+region_rect = Rect2(7.648899, 13.655455, 22.032873, 18.528254)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DialogueBox/NinePatchRect" unique_id=1158113397]
 layout_mode = 1

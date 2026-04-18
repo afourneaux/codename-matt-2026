@@ -26,7 +26,8 @@ func get_input():
 	else:
 		sprite.stop()
 	
-	if Input.is_physical_key_pressed(KEY_E):
+func _input(event):
+	if event.is_action_pressed("interact"):
 		on_interact.emit()
 
 func _physics_process(delta):
