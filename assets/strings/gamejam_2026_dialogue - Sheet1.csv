@@ -1,5 +1,7 @@
 key,en,fr
 debug_string,we have text,nous avons du text
-room0_string0,[wave]*groans* My head hurts?[/wave],
-room0_string1,Where am I?,
-task_string1,Give IV to patient,Donner un IV au patient
+room0_string0,[wave]My head hurts[/wave],[wave]J'ai mal a la tete[/wave]
+room0_string1,[wave]Where am I?[/wave],[wave]Ou suis-je?[/wave]
+task_string1,Give [color=red]IV[/color] to patient,Donner un [color=red]IV[/color] au patient
+play_button,Play,Jouer
+quit_button,Quit,Quitter
