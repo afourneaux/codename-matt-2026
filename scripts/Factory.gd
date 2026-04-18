@@ -4,13 +4,13 @@ extends Object
 
 static var room_obj = preload("res://scenes/rooms/room.tscn")
 static var character_obj = preload("res://scenes/player/player_character.tscn")
-const ROOM_CENTRE = Vector2(400,500)
+const ROOM_CENTRE = Vector2(550,550)
 
 static var door_positions = {
-	0: Vector2(450, 420),
-	1: Vector2(700, 420),
-	2: Vector2(700, 520),
-	3: Vector2(450, 520)
+	0: Vector2(450, 400),
+	1: Vector2(700, 400),
+	2: Vector2(700, 550),
+	3: Vector2(450, 550)
 }
 
 static var room_data = {
