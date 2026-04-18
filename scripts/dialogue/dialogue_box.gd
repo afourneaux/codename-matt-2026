@@ -6,7 +6,7 @@ func starting_dialogue():
 	text_label.visible = true
 	var read_dialogue = false
 	var dialogue_loop = {
-		line0 = "[wave amp=50.0 freq=5.0 connected=1]room0_string0[/wave]",
+		line0 = "room0_string0",
 		line1 = "room0_string1"
 	}
 

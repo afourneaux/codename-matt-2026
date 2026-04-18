@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8bc0awnutnw1"]
 
 [ext_resource type="Script" uid="uid://d3326ck5oqdsm" path="res://scripts/dialogue/dialogue_box.gd" id="1_ky4iy"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_ky4iy"]
 
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
 resource_name = "World"
@@ -56,4 +57,5 @@ offset_top = -23.0
 offset_right = 150.0
 offset_bottom = 27.0
 grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_ky4iy")
 bbcode_enabled = true
