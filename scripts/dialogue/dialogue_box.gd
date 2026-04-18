@@ -1,9 +1,11 @@
 extends CanvasLayer
 
-@onready var text_label: RichTextLabel = $RichTextLabel
+@onready var text_label: RichTextLabel = $NinePatchRect/RichTextLabel
+@onready var text_bubble: NinePatchRect = $NinePatchRect
 
 func starting_dialogue():
 	text_label.visible = true
+	text_bubble.visible = true
 	var read_dialogue = false
 	var dialogue_loop = {
 		line0 = "room0_string0",
