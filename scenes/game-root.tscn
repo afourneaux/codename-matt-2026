@@ -54,5 +54,6 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -23.0
 offset_right = 150.0
-offset_bottom = 17.0
+offset_bottom = 27.0
 grow_vertical = 2
+bbcode_enabled = true
