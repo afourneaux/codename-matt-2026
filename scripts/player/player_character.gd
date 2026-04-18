@@ -5,9 +5,7 @@ const SPEED = 300.0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func interaction():
-	var interact = Input.is_action_pressed("interact")
-	if interact:
-		print("Interacting with the environment")
+	pass
 
 func get_input():
 	var input = Input.get_vector("a", "d", "w", "s")
