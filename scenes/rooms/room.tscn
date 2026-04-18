@@ -11,13 +11,13 @@ var room_links = {}
 var interactions = []
 var image: String
 
+
 var door_positions = {
 	0: Vector2(450, 400),
 	1: Vector2(700, 400),
 	2: Vector2(700, 500),
 	3: Vector2(450, 500)
 }
-
 
 var door_obj = preload(\"res://scenes/rooms/door.tscn\")
 
@@ -41,7 +41,6 @@ func _on_door_entered(door_id):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$BGImage.texture = load(image)
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
