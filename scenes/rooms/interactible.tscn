@@ -20,6 +20,7 @@ func set_image(force_complete = false):
 	var _image = image_complete if force_complete or GameState.task_completion[id] else image
 	if _image == \"\":
 		queue_free()
+		return
 	$Sprite.texture = load(_image)
 
 func on_approached(body):
