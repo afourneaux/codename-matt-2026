@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://wyqmux4hy5mx"]
 
-[ext_resource type="Texture2D" uid="uid://bl2fif2jojeg2" path="res://assets/sprites/Room shape.png" id="1_l8042"]
-
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
 resource_name = "RoomBase"
 script/source = "extends Node2D
@@ -64,7 +62,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_l8042")
 
 [node name="Walls" type="Node2D" parent="." unique_id=2053772779]
 
