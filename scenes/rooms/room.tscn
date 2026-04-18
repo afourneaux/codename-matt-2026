@@ -11,23 +11,16 @@ var room_links = {}
 var interactions = []
 var image: String
 
-
-var door_positions = {
-	0: Vector2(450, 400),
-	1: Vector2(700, 400),
-	2: Vector2(700, 500),
-	3: Vector2(450, 500)
-}
-
 var door_obj = preload(\"res://scenes/rooms/door.tscn\")
 
-func create_link(pos, target):
+func create_link(id, pos, target, enabled):
 	var door = door_obj.instantiate()
-	door.door_id = pos
-	door.position = door_positions[pos]
+	door.door_id = id
+	door.position = pos
+	door.enabled = enabled
 	door.door_entered.connect(_on_door_entered)
 	$Doors.add_child(door)
-	room_links[pos] = target
+	room_links[id] = target
 
 func create_interaction(posx, posy, interaction_id):
 	interactions.append({\"posx\": posx, \"posy\": posy, \"id\": interaction_id})
@@ -35,8 +28,7 @@ func create_interaction(posx, posy, interaction_id):
 
 func _on_door_entered(door_id):
 	print(\"Entered door %s to room %s\" % [door_id, room_links[door_id]])
-	var new_position_index = (door_id + 2) % 4
-	room_changed.emit(door_positions[new_position_index], room_links[door_id])
+	room_changed.emit(door_id, room_links[door_id])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
