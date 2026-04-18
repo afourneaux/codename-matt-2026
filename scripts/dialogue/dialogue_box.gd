@@ -15,8 +15,5 @@ func starting_dialogue():
 			await get_tree().create_timer(2.0).timeout
 		read_dialogue = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _ready():
 	starting_dialogue()
-	#text_label.text = "debug_string"
-
