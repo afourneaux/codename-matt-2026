@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gq6epy8wcapt"]
 
 [ext_resource type="PackedScene" uid="uid://ddu7gjrk70p2s" path="res://scenes/dialogue/dialogue_box.tscn" id="1_ky4iy"]
-[ext_resource type="PackedScene" uid="uid://c2woextvlifjc" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
+[ext_resource type="PackedScene" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
 resource_name = "GameRoot"
@@ -138,6 +138,7 @@ script = SubResource("GDScript_rckx3")
 
 [node name="Todo" parent="UI" unique_id=1561376941 instance=ExtResource("2_jcw77")]
 layout_mode = 1
+anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
