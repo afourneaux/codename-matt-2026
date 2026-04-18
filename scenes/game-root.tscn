@@ -32,6 +32,7 @@ resource_name = "World"
 script/source = "extends Node2D
 
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
+var mini_game_0_prefab = preload(\"res://scenes/mini_games/mini_game_0.tscn\") 
 var active_room: Node2D
 
 	
@@ -57,6 +58,13 @@ func change_room(door_source: int, room_id: int):
 func on_interact():
 	if active_room.interactible == -1:
 		return
+	elif active_room.interactible == 0:
+		var mini_game_0 = mini_game_0_prefab.instantiate()
+		add_child(mini_game_0)
+		mini_game_0.completed.connect(
+			func():
+				remove_child(mini_game_0)
+		)
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible
 "
@@ -109,6 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = SubResource("GDScript_rckx3")
 
 [node name="DialogueBox" type="CanvasLayer" parent="UI" unique_id=1761053783]
