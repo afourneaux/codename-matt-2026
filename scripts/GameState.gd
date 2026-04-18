@@ -5,6 +5,7 @@ extends Node
 #2 mirror
 const TOTAL_INTERACTIBLES = 3
 static var task_completion = []
+static var in_mini_game = false
 
 func _ready():
 	for i in range(TOTAL_INTERACTIBLES):
