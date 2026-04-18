@@ -1,10 +1,9 @@
-[gd_scene format=3 uid="uid://c8bc0awnutnw1"]
+[gd_scene format=3 uid="uid://gq6epy8wcapt"]
 
 [ext_resource type="Script" uid="uid://d3326ck5oqdsm" path="res://scripts/dialogue/dialogue_box.gd" id="1_ky4iy"]
 [ext_resource type="Texture2D" uid="uid://dt6atkq3ec3w3" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="2_jcw77"]
 [ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_ky4iy"]
 [ext_resource type="Texture2D" uid="uid://cqnolt8ws7ofj" path="res://assets/sprites/To_Do_List.png" id="3_0fvj0"]
-[ext_resource type="PackedScene" uid="uid://cycg65w1tnflm" path="res://scenes/todo/todo-item.tscn" id="5_rckx3"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
 resource_name = "GameRoot"
@@ -20,13 +19,13 @@ func _ready() -> void:
 	# TODO - call based on a signal from UI?
 	for task in task_list:
 		task_completion.append(false)
-	$UI.setup_task_list(task_list)
+	$UI.update_task_list(task_list, task_completion)
 	$World.start_game()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 "
 
 [sub_resource type="GDScript" id="GDScript_wnm2b"]
@@ -78,12 +77,20 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-func setup_task_list(task_list):
-	pass
 
-func update_task_list(task_completions):
-	pass
+func update_task_list(task_list, task_completions):
+	var index = 0
+	for child in $Todo/List.get_children():
+		child.queue_free()
+	for task in task_list:
+		var task_item = todo_item_obj.instantiate()
+		if task_completions[index]:
+			task_item.text = \"[s]%s[/s]\" % task
+		else:
+			task_item.text = task
+		$Todo/List.add_child(task_item)
+		index += 1
+			
 	
 func _input(event):
 	if event.is_action_pressed(\"todo\"):
@@ -115,15 +122,6 @@ offset_right = 147.0
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox" unique_id=1118358105]
-offset_right = 50.0
-offset_bottom = 50.0
-region_rect = Rect2(7.648899, 13.655455, 22.032873, 18.528254)
-patch_margin_left = 3
-patch_margin_top = 2
-patch_margin_right = 3
-patch_margin_bottom = 5
-
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox/MarginContainer" unique_id=1118358105]
 layout_mode = 2
 texture = ExtResource("2_jcw77")
@@ -150,6 +148,15 @@ theme_override_fonts/normal_font = ExtResource("2_ky4iy")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/DialogueBox" unique_id=936708373]
+offset_right = 50.0
+offset_bottom = 50.0
+region_rect = Rect2(7.648899, 13.655455, 22.032873, 18.528254)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 5
 
 [node name="Todo" type="NinePatchRect" parent="UI" unique_id=1555625326]
 visible = false
@@ -192,14 +199,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
+offset_left = 75.0
 offset_top = 200.0
-offset_right = -50.0
+offset_right = -75.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TodoItem" parent="UI/Todo/List" unique_id=1623680660 instance=ExtResource("5_rckx3")]
-layout_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-scroll_active = false

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cycg65w1tnflm"]
 
-[node name="RichTextLabel" type="RichTextLabel" unique_id=1623680660]
+[node name="Item" type="RichTextLabel" unique_id=1623680660]
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "TEXT_NOT_ENTERED"
 fit_content = true
