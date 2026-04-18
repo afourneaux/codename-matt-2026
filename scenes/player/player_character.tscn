@@ -1,42 +1,39 @@
 [gd_scene format=3 uid="uid://c0i81024lfegk"]
 
 [ext_resource type="Script" uid="uid://o36q6yhddyu1" path="res://scripts/player/player_character.gd" id="1_eebfp"]
-[ext_resource type="Texture2D" uid="uid://ns844lbrn72b" path="res://assets/sprites/man walking/Man_Walking_Sprite_Sheet.png" id="2_eebfp"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eebfp"]
-atlas = ExtResource("2_eebfp")
-region = Rect2(0, 0, 34, 35)
+[ext_resource type="Texture2D" uid="uid://p1t4tqn6jdp2" path="res://assets/sprites/Man_Walking_Sprite_Sheet.png" id="2_eebfp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1j0t"]
 atlas = ExtResource("2_eebfp")
-region = Rect2(34, 0, 34, 35)
+region = Rect2(0, 0, 68, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s66ro"]
 atlas = ExtResource("2_eebfp")
-region = Rect2(68, 0, 34, 35)
+region = Rect2(68, 0, 68, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0icub"]
 atlas = ExtResource("2_eebfp")
-region = Rect2(102, 0, 34, 35)
+region = Rect2(136, 0, 68, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocp37"]
 atlas = ExtResource("2_eebfp")
-region = Rect2(136, 0, 34, 35)
+region = Rect2(204, 0, 68, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f85ux"]
 atlas = ExtResource("2_eebfp")
-region = Rect2(170, 0, 34, 35)
+region = Rect2(272, 0, 68, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryjgy"]
 atlas = ExtResource("2_eebfp")
-region = Rect2(204, 0, 34, 35)
+region = Rect2(340, 0, 68, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvac4"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(408, 0, 68, 70)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_auamg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eebfp")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1j0t")
 }, {
@@ -54,6 +51,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ryjgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvac4")
 }],
 "loop": true,
 "name": &"walking",
@@ -61,7 +61,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eebfp"]
-size = Vector2(50, 29.5)
+size = Vector2(106, 54.875)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1295364437]
 script = ExtResource("1_eebfp")
@@ -71,9 +71,9 @@ position = Vector2(4.7822275, -3.5986323)
 scale = Vector2(3, 3.048)
 sprite_frames = SubResource("SpriteFrames_auamg")
 animation = &"walking"
-frame = 6
-frame_progress = 0.015808003
+frame = 4
+frame_progress = 0.5115503
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634259441]
-position = Vector2(6, 35)
+position = Vector2(-2, 70.5625)
 shape = SubResource("RectangleShape2D_eebfp")
