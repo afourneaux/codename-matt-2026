@@ -6,34 +6,25 @@
 resource_name = "World"
 script/source = "extends Node2D
 
-const ROOM_CENTRE = Vector2(576,450)
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var active_room: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#TODO Call from \"Start game\" logic
-	change_room(Vector2.ZERO, 0)
+	change_room(-1, 0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func change_room(character_position: Vector2, room_id: int):
+func change_room(door_source: int, room_id: int):
 	if active_room:
 		active_room.queue_free()
-	active_room = Factory.create_room(room_id)
+	active_room = Factory.create_room(room_id, door_source)
 	active_room.room_changed.connect(change_room)
 	add_child(active_room)
-	var character = character_prefab.instantiate()
-	if character_position == Vector2.ZERO:
-		# Initial spawn - room centre
-		character.position = ROOM_CENTRE
-	else:
-		# Appear on opposite corner of entered door
-		character.position = character_position
-	active_room.add_child(character)
 "
 
 [node name="GameRoot" type="Node" unique_id=527814795]
