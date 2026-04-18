@@ -25,7 +25,14 @@ func change_room(door_source: int, room_id: int):
 		active_room.queue_free()
 	active_room = Factory.create_room(room_id, door_source)
 	active_room.room_changed.connect(change_room)
+	active_room.character.on_interact.connect(on_interact)
 	add_child(active_room)
+
+func on_interact():
+	if active_room.interactible == -1:
+		return
+	print(\"interacting with %s\" % active_room.interactible)
+	# TODO - launch interactible minigame based on the contents of active_room.interactible
 "
 
 [node name="GameRoot" type="Node" unique_id=527814795]

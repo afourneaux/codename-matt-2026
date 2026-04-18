@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal on_interact
 
 const SPEED = 300.0
 
@@ -24,6 +25,9 @@ func get_input():
 			sprite.play("walking")
 	else:
 		sprite.stop()
+	
+	if Input.is_physical_key_pressed(KEY_E):
+		on_interact.emit()
 
 func _physics_process(delta):
 	get_input()

@@ -20,11 +20,6 @@ static var room_data = {
 			2: 1
 		},
 		"interactions": [
-			{
-				"id": 0,
-				"posx": 5,
-				"posy": 10
-			}
 		],
 		"image": "res://assets/sprites/Roomshape.png"
 	},
@@ -35,6 +30,11 @@ static var room_data = {
 			2: 3
 		},
 		"interactions": [
+			{
+				"id": 0,
+				"posx": 576,
+				"posy": 350
+			}
 		],
 		"image": "res://assets/sprites/Roomshape.png"
 	},
@@ -84,4 +84,5 @@ static func create_room(room_id: int, last_door_position: int):
 	else:
 		character.position = door_positions[new_door_position]
 	room.add_child(character)
+	room.character = character
 	return room
