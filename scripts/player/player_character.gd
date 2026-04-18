@@ -11,11 +11,19 @@ func get_input():
 	var input = Input.get_vector("a", "d", "w", "s")
 	velocity = input * SPEED
 
-	if velocity.x < 0:
-		sprite.flip_h = true
+	if velocity:
+		if velocity.x < 0:
+			sprite.play("walking")
+			sprite.flip_h = true
 
+		elif velocity.x > 0:
+			sprite.play("walking")
+			sprite.flip_h = false
+		
+		elif velocity.y:
+			sprite.play("walking")
 	else:
-		sprite.flip_h = false
+		sprite.stop()
 
 func _physics_process(delta):
 	get_input()

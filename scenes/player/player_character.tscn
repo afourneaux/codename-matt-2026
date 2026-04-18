@@ -1,29 +1,79 @@
 [gd_scene format=3 uid="uid://c0i81024lfegk"]
 
-[ext_resource type="Texture2D" uid="uid://dq5cfloeyd5a6" path="res://icon.svg" id="1_auamg"]
 [ext_resource type="Script" uid="uid://o36q6yhddyu1" path="res://scripts/player/player_character.gd" id="1_eebfp"]
+[ext_resource type="Texture2D" uid="uid://ns844lbrn72b" path="res://assets/sprites/man walking/Man_Walking_Sprite_Sheet.png" id="2_eebfp"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hovw3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eebfp"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(0, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1j0t"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(34, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s66ro"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(68, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0icub"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(102, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocp37"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(136, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f85ux"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(170, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjgy"]
+atlas = ExtResource("2_eebfp")
+region = Rect2(204, 0, 34, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_auamg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_auamg")
+"texture": SubResource("AtlasTexture_eebfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1j0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s66ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0icub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocp37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f85ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryjgy")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 5.0
+"name": &"walking",
+"speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eebfp"]
+size = Vector2(50, 29.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1295364437]
 script = ExtResource("1_eebfp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634259441]
-shape = SubResource("CapsuleShape2D_hovw3")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1017165411]
-position = Vector2(9.536743e-07, 1)
-scale = Vector2(0.1640625, 0.16015628)
+position = Vector2(4.7822275, -3.5986323)
+scale = Vector2(3, 3.048)
 sprite_frames = SubResource("SpriteFrames_auamg")
-animation = &"idle"
+animation = &"walking"
+frame = 6
+frame_progress = 0.015808003
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634259441]
+position = Vector2(6, 35)
+shape = SubResource("RectangleShape2D_eebfp")
