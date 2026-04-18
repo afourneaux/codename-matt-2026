@@ -47,6 +47,10 @@ e={
 "events": []
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/strings/gamejam_2026_dialogue - Sheet1.fr.translation", "res://assets/strings/gamejam_2026_dialogue - Sheet1.en.translation")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
