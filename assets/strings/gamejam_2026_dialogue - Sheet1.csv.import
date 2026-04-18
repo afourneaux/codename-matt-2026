@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bf4jqdpnlnnvm"
+
+[deps]
+
+files=["res://assets/strings/gamejam_2026_dialogue - Sheet1.en.translation", "res://assets/strings/gamejam_2026_dialogue - Sheet1.fr.translation"]
+
+source_file="res://assets/strings/gamejam_2026_dialogue - Sheet1.csv"
+dest_files=["res://assets/strings/gamejam_2026_dialogue - Sheet1.en.translation", "res://assets/strings/gamejam_2026_dialogue - Sheet1.fr.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

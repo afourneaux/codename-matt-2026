@@ -5,11 +5,16 @@ resource_name = "Door0"
 script/source = "extends Area2D
 signal door_entered
 
-var door_target: int = -1
-
+var door_id: int = -1
+var enabled = true
 
 func _body_entered(body: Node2D) -> void:
-	door_entered.emit(door_target)
+	if enabled:
+		door_entered.emit(door_id)
+
+
+func _on_body_exited(body: Node2D) -> void:
+	enabled = true
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
@@ -21,3 +26,4 @@ script = SubResource("GDScript_ab2as")
 shape = SubResource("CircleShape2D_ab2as")
 
 [connection signal="body_entered" from="." to="." method="_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
