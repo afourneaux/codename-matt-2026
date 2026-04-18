@@ -13,9 +13,7 @@ var blocker_scale
 
 func _ready():
 	set_image()
-	var circle = CircleShape2D.new()
-	circle.radius *= blocker_scale
-	$BlockerBox.shape = circle
+	$BlockerBox.shape.radius *= blocker_scale
 	EventBus.task_completed.connect(on_task_complete)
 
 func set_image(force_complete = false):
@@ -40,6 +38,7 @@ func on_task_complete(_id):
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab2as"]
+resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8042"]
 
