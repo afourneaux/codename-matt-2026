@@ -1,26 +1,30 @@
 [gd_scene format=3 uid="uid://c1j5sag8qhj02"]
 
+[ext_resource type="Texture2D" uid="uid://d0sl11sk5bax4" path="res://assets/sprites/potatozoom.png" id="1_ly61o"]
+[ext_resource type="Texture2D" uid="uid://bjgrvblixnaoc" path="res://assets/sprites/Needlezoom.png" id="2_q70ky"]
+[ext_resource type="Texture2D" uid="uid://dhva4yeu240xx" path="res://assets/sprites/ivzoom.png" id="3_3aj7w"]
+[ext_resource type="Texture2D" uid="uid://sv75vuffclmv" path="res://assets/sprites/potatowithivzoom.png" id="4_q70ky"]
+
 [sub_resource type="GDScript" id="GDScript_77cm3"]
 script/source = "extends Node2D
 
 signal completed
 
 func _ready() -> void:
+	if GameState.task_completion[0] or not GameState.task_completion[1]:
+		queue_free()
 	find_child(\"iv\").potato_ived.connect(_on_potato_ived)
 	
 func _on_potato_ived():
-	print(\"mini game completed\")
+	find_child(\"potato\").visible = false
+	find_child(\"iv\").visible = false
+	find_child(\"iv_stand\").visible = false
+	find_child(\"ived_potato\").visible = true
 	completed.emit()
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hy0nb"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7t1l"]
-size = Vector2(100, 100)
-
-[sub_resource type="LabelSettings" id="LabelSettings_28b7v"]
-font_size = 37
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lvoa"]
+size = Vector2(203, 174)
 
 [sub_resource type="GDScript" id="GDScript_3l8m7"]
 script/source = "extends Area2D
@@ -46,7 +50,9 @@ func _input(event):
 		if over_potato:
 			potato_ived.emit()
 	elif event is InputEventMouseMotion and dragging:
-		position = event.position
+		position += event.relative
+		
+
 		
 
 func _on_mouse_entered():
@@ -64,51 +70,56 @@ func _on_area_exited(area):
 		over_potato = false
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7t1l"]
+size = Vector2(123, 43)
+
 [node name="MiniGame1" type="Node2D" unique_id=859721148]
 script = SubResource("GDScript_77cm3")
 
-[node name="background" type="Sprite2D" parent="." unique_id=740407016]
-region_enabled = true
-region_rect = Rect2(0, 0, 640, 360)
-
-[node name="potato" type="Area2D" parent="background" unique_id=587643905]
+[node name="potato" type="Area2D" parent="." unique_id=587643905]
+z_index = 2
 position = Vector2(920, 224)
 
-[node name="potato_sprite" type="Sprite2D" parent="background/potato" unique_id=122524726]
-texture = SubResource("CompressedTexture2D_hy0nb")
+[node name="potato_sprite" type="Sprite2D" parent="potato" unique_id=122524726]
+texture = ExtResource("1_ly61o")
 region_rect = Rect2(0, 0, 50, 50)
 
-[node name="potato_colision" type="CollisionShape2D" parent="background/potato" unique_id=1722813684]
-shape = SubResource("RectangleShape2D_g7t1l")
+[node name="potato_colision" type="CollisionShape2D" parent="potato" unique_id=1722813684]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_8lvoa")
 
-[node name="potato_label" type="Label" parent="background/potato" unique_id=171057767]
-offset_left = -60.0
-offset_top = -119.0
-offset_right = 59.0
-offset_bottom = -14.0
-text = "potato
-"
-label_settings = SubResource("LabelSettings_28b7v")
-horizontal_alignment = 1
-
-[node name="iv" type="Area2D" parent="background" unique_id=504737311]
-position = Vector2(201, 176)
+[node name="iv" type="Area2D" parent="." unique_id=504737311]
+z_index = 2
+position = Vector2(566, 480)
 script = SubResource("GDScript_3l8m7")
 
-[node name="iv_sprite" type="Sprite2D" parent="background/iv" unique_id=1777923234]
-texture = SubResource("CompressedTexture2D_hy0nb")
+[node name="iv_sprite" type="Sprite2D" parent="iv" unique_id=1777923234]
+texture = ExtResource("2_q70ky")
+flip_h = true
 region_rect = Rect2(0, 0, 50, 50)
 
-[node name="iv_colision" type="CollisionShape2D" parent="background/iv" unique_id=1784550331]
+[node name="iv_colision" type="CollisionShape2D" parent="iv" unique_id=1784550331]
+position = Vector2(0.5, -263.5)
 shape = SubResource("RectangleShape2D_g7t1l")
 
-[node name="iv_label" type="Label" parent="background/iv" unique_id=2023835951]
-offset_left = -60.0
-offset_top = -119.0
-offset_right = 59.0
-offset_bottom = -14.0
-text = "iv
+[node name="iv_stand" type="Sprite2D" parent="." unique_id=895035354]
+z_index = 2
+position = Vector2(296, 320)
+texture = ExtResource("3_3aj7w")
+flip_h = true
 
-"
-label_settings = SubResource("LabelSettings_28b7v")
-horizontal_alignment = 1
+[node name="ived_potato" type="Sprite2D" parent="." unique_id=1086991972]
+visible = false
+z_index = 2
+position = Vector2(272.00003, 320.00003)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("4_q70ky")
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=265590899]
+z_index = 1
+offset_left = 7.0
+offset_right = 1287.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.8039216)

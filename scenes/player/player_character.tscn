@@ -60,18 +60,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eebfp"]
-size = Vector2(38, 16.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_eebfp"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1295364437]
 script = ExtResource("1_eebfp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1017165411]
-position = Vector2(4.7822275, -3.5986323)
+position = Vector2(4.782, -30)
 sprite_frames = SubResource("SpriteFrames_auamg")
 animation = &"walking"
 frame_progress = 0.41513842
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634259441]
-position = Vector2(-2, 23.25)
-shape = SubResource("RectangleShape2D_eebfp")
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_eebfp")
