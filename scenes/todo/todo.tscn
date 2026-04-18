@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c2woextvlifjc"]
+
+[ext_resource type="Texture2D" uid="uid://cqnolt8ws7ofj" path="res://assets/sprites/To_Do_List.png" id="1_2lmmb"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_pkikx"]
+
+[sub_resource type="GDScript" id="GDScript_0fvj0"]
+resource_name = "Todo"
+script/source = "extends NinePatchRect
+
+
+var is_open
+var target_y
+const Y_CLOSED = 700
+const Y_OPEN = 74
+const SPEED = 8
+
+
+func _ready():
+	target_y = Y_CLOSED
+	is_open = false
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	position.y = lerpf(position.y, target_y, SPEED * delta)
+
+func change_state():
+	is_open = !is_open
+	target_y = Y_OPEN if is_open else Y_CLOSED
+"
+
+[node name="Todo" type="NinePatchRect" unique_id=1561376941]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 376.0
+offset_right = 200.0
+offset_bottom = 876.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2lmmb")
+region_rect = Rect2(0, 0, 400, 500)
+patch_margin_left = 114
+patch_margin_top = 111
+patch_margin_right = 111
+patch_margin_bottom = 75
+script = SubResource("GDScript_0fvj0")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=759836453]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 152.00006
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_pkikx")
+theme_override_font_sizes/normal_font_size = 40
+text = "#TODO"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="List" type="VBoxContainer" parent="." unique_id=1733708848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = 200.0
+offset_right = -75.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
