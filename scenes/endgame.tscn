@@ -1,0 +1,335 @@
+[gd_scene format=3 uid="uid://dcxi5awg6qvmb"]
+
+[ext_resource type="Texture2D" uid="uid://dfgd6c0qvl3js" path="res://assets/sprites/Room_ending.png" id="1_m5up5"]
+[ext_resource type="Texture2D" uid="uid://8adb01djlxlc" path="res://assets/sprites/Sinkandmirrorclean.png" id="2_tbbo3"]
+[ext_resource type="Texture2D" uid="uid://ikymlrns4euu" path="res://assets/sprites/Man_Walking_Sprite_Sheet_colo_spaced.png" id="3_odl71"]
+[ext_resource type="Texture2D" uid="uid://ckcmkm422cq8d" path="res://assets/sprites/Ending_glass.png" id="4_tbbo3"]
+[ext_resource type="Texture2D" uid="uid://bqllgodfj26dc" path="res://assets/sprites/Ending_frame.png" id="5_odl71"]
+[ext_resource type="Texture2D" uid="uid://brdfv26dhahe" path="res://assets/sprites/Scientist2x.png" id="6_cytj6"]
+
+[sub_resource type="GDScript" id="GDScript_cytj6"]
+resource_name = "endgame"
+script/source = "extends Node2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$AnimationPlayer.play(\"endgame\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if (!$AnimationPlayer.is_playing()):
+		get_tree().quit()
+	
+"
+
+[sub_resource type="Animation" id="Animation_odl71"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoomImage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RoomImage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cytj6"]
+resource_name = "Zoomout"
+length = 10.0
+step = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glass:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glass:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.13333336, 0, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Frame:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bhj8y"]
+resource_name = "endgame"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glass:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.26666668, 0, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glass:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Frame:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Person:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Person:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.06666668, 0, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [545.0, 700.0, 500.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Person:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Person2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Person2:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [700.0, 500.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Person2:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Person3:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Person3:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [700.0, 500.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Person3:modulate:a")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("RoomImage:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("RoomImage:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(115.2, 64.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhj8y"]
+_data = {
+&"RESET": SubResource("Animation_odl71"),
+&"Zoomout": SubResource("Animation_cytj6"),
+&"endgame": SubResource("Animation_bhj8y")
+}
+
+[node name="Endgame" type="Node2D" unique_id=1957867767]
+script = SubResource("GDScript_cytj6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1969285475]
+libraries/ = SubResource("AnimationLibrary_bhj8y")
+
+[node name="RoomImage" type="TextureRect" parent="." unique_id=632757160]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0002
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m5up5")
+
+[node name="TextureRect" type="TextureRect" parent="RoomImage" unique_id=808102535]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 213.0
+offset_right = 668.0
+offset_bottom = 385.0
+texture = ExtResource("2_tbbo3")
+
+[node name="TextureRect2" type="NinePatchRect" parent="RoomImage" unique_id=946732450]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 335.0
+offset_right = 569.0
+offset_bottom = 409.0
+texture = ExtResource("3_odl71")
+region_rect = Rect2(0, 0, 42.914925, 74)
+
+[node name="Glass" type="Sprite2D" parent="." unique_id=2115464620]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(604, 325)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_tbbo3")
+
+[node name="Frame" type="Sprite2D" parent="." unique_id=819692791]
+position = Vector2(604, 326)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_odl71")
+
+[node name="Person" type="Sprite2D" parent="." unique_id=1406641677]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(355, 700)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_cytj6")
+
+[node name="Person2" type="Sprite2D" parent="." unique_id=628098358]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(700, 700)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_cytj6")
+
+[node name="Person3" type="Sprite2D" parent="." unique_id=618641838]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(900, 700)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_cytj6")
