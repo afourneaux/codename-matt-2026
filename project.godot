@@ -19,6 +19,7 @@ config/icon="uid://dlcwhw2sgn5ae"
 
 EventBus="*uid://dte70k742tavp"
 GameState="*uid://o20p33f1une4"
+Audio="*uid://dr7r1cqrj6k3b"
 
 [display]
 
