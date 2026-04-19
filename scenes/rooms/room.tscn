@@ -56,7 +56,13 @@ func _ready() -> void:
 		# when re-entering potato IV room after potato is ived, potato iv moved
 		interactibles[0].position = Vector2(randi_range(408, 724), randi_range(350, 447))
 	elif room_id == 2 and not GameState.task_completion[1]:
-		EventBus.display_dialog.emit(\"potato_string1\")
+		GameState.potato_alone_room_visited +=1
+		if GameState.potato_alone_room_visited == 1:
+			EventBus.display_dialog.emit(\"potato_string1\")
+		elif GameState.potato_alone_room_visited == 2:
+			EventBus.display_dialog.emit(\"potato_string4\")
+		elif GameState.potato_alone_room_visited == 4:
+			EventBus.display_dialog.emit(\"potato_string5\")
 
 func on_approach_interactible(id):
 	interactible = id
