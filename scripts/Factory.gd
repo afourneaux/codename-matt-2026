@@ -96,9 +96,10 @@ static var room_data = {
 			{
 				# key
 				"id": 3,
-				"position": Vector2(750, 450),
-				"image": "res://icon.svg",
-				"image_complete": "res://assets/sprites/potato.png"
+				"position": Vector2(780, 450),
+				"hitbox_scale": 4,
+				"image": "res://assets/sprites/Tableandkey.png",
+				"image_complete": "res://assets/sprites/Tableempty.png"
 			}
 		],
 		"blockers": [
@@ -113,9 +114,9 @@ static var room_data = {
 			{
 				# pills
 				"id": 4,
-				"position": Vector2(800, 450),
-				"image": "res://assets/sprites/potato.png", # TODO Pill bottles on table in room
-				"image_complete": "res://assets/sprites/potato.png" # TODO cleaned up pill bottles
+				"position": Vector2(800, 415),
+				"image": "res://assets/sprites/Pillcabinetclosed.png",
+				"image_complete": "res://assets/sprites/Pillcabinetopen.png"
 			}
 		],
 		"image": "res://assets/sprites/Room_4.png"
@@ -135,7 +136,7 @@ static var room_data = {
 				"image_complete": "" # TODO wood board with clean bandage
 			}
 		],
-		"image": "res://assets/sprites/Room_4.png"
+		"image": "res://assets/sprites/Room_5.png"
 	},
 	6: {
 		# doppy rush room
@@ -143,7 +144,7 @@ static var room_data = {
 			2: 5
 		},
 		"interactions": [],
-		"image": "res://assets/sprites/Room_4.png"
+		"image": "res://assets/sprites/Room_6.png"
 	},
 	9: {
 		"links": {

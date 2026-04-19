@@ -13,7 +13,7 @@ signal completed
 
 var pill_obj = preload(\"res://scenes/mini_games/pill.tscn\")
 const SCREEN_CENTRE = Vector2(580, 300)
-const PILL_COUNT = 15
+const PILL_COUNT = 1#5
 var pills_collected = 0
 
 func _enter_tree() -> void:
