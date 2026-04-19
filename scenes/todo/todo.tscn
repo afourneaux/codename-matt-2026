@@ -17,6 +17,7 @@ const SPEED = 8
 
 func _ready():
 	target_y = Y_CLOSED
+	position.y = Y_CLOSED
 	is_open = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

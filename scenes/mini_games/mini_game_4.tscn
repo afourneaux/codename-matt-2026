@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cqnolt8ws7ofj" path="res://assets/sprites/To_Do_List.png" id="1_87vlw"]
 [ext_resource type="Texture2D" uid="uid://dsn22m8sptwub" path="res://assets/sprites/sink.png" id="2_h5f8j"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="3_50mkq"]
 [ext_resource type="Texture2D" uid="uid://d2ry6o8dvackv" path="res://assets/sprites/Patient chart.png" id="3_tuuq7"]
 
 [sub_resource type="GDScript" id="GDScript_0b7st"]
@@ -26,7 +27,9 @@ func _ready() -> void:
 	for i in range(PILL_COUNT):
 		var pill = pill_obj.instantiate()
 		pill.position = SCREEN_CENTRE
+		pill.colour = Color(randf_range(0.5, 1), randf_range(0.5, 1), randf_range(0.5, 1), 1)
 		$Pills.add_child(pill)
+	update_label()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,10 +37,14 @@ func _process(delta: float) -> void:
 	if pills_collected >= PILL_COUNT:
 		completed.emit()
 
+func update_label():
+	$Status.text = \"%s / %s\" % [pills_collected, PILL_COUNT]
 
 func _on_capture_point_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	pills_collected += 1
+	update_label()
+	
 "
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h5f8j"]
@@ -70,7 +77,7 @@ func _physics_process(delta: float):
 [node name="MiniGame4" type="Node2D" unique_id=62865308]
 script = SubResource("GDScript_0b7st")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=522854981]
+[node name="Background" type="ColorRect" parent="." unique_id=522854981]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -122,6 +129,27 @@ shape = SubResource("WorldBoundaryShape2D_h5f8j")
 position = Vector2(580, 630)
 texture = ExtResource("2_h5f8j")
 
+[node name="Status" type="RichTextLabel" parent="." unique_id=1193350716]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 476.0
+offset_top = 234.0
+offset_right = 676.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_50mkq")
+theme_override_font_sizes/normal_font_size = 32
+text = "test"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CapturePoint" type="Area2D" parent="." unique_id=2068536078]
 position = Vector2(580, 600)
 collision_layer = 32
@@ -138,9 +166,11 @@ collision_mask = 80
 script = SubResource("GDScript_tuuq7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mouse" unique_id=2098058980]
+scale = Vector2(2, 2)
 texture = ExtResource("3_tuuq7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse" unique_id=307941039]
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_h5f8j")
 
 [connection signal="body_entered" from="CapturePoint" to="." method="_on_capture_point_body_entered"]
