@@ -4,6 +4,7 @@ extends Object
 
 static var room_obj = preload("res://scenes/rooms/room.tscn")
 static var character_obj = preload("res://scenes/player/player_character.tscn")
+static var doppy_obj = preload("res://scenes/mini_games/doppy.tscn")
 const ROOM_CENTRE = Vector2(550,550)
 
 static var door_positions = {
@@ -196,4 +197,18 @@ static func create_room(room_id: int, last_door_position: int):
 		character.position = door_positions[new_door_position]
 	room.add_child(character)
 	room.character = character
+	if room_id == 1:
+		# spawn doppy
+		var doppy = doppy_obj.instantiate()
+		var opposite_door = {
+			0: 1,
+			1: 0,
+			2: 3,
+			3: 2
+		}
+		if last_door_position == -1:
+			doppy.position = ROOM_CENTRE
+		else:
+			doppy.position = door_positions[opposite_door[new_door_position]]
+		room.add_child(doppy)
 	return room
