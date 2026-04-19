@@ -4,6 +4,7 @@ static var task_completion = {
 	0: false, #0 IV / potato
 	1: false, #1 potato pickup
 	2: false, #2 mirror
+	3: false, #3 key
 	4: false, #4 pills
 	8: false, #8 chart
 	9: false, #9 final mirror
@@ -16,6 +17,7 @@ static var freeze_inputs = false
 static var checked_mirror = 0
 static var has_interacted = false
 static var doppy_room_visited = 0
+static var potato_alone_room_visited = 0
 static var current_room_id = 0
 
 static func are_tasks_complete() -> bool:
