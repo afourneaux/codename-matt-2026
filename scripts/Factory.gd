@@ -23,11 +23,11 @@ static var room_data = {
 		"interactions": [
 			{
 				# sink
-				"id": 4, # TODO: 2
+				"id": 2,
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
-				"image": "res://assets/sprites/sink.png",
-				"image_complete": "res://assets/sprites/sink.png"
+				"image": "res://assets/sprites/Sinkandmirror.png",
+				"image_complete": "res://assets/sprites/Sinkandmirror.png"
 			}
 		],
 		"blockers": [
@@ -52,7 +52,7 @@ static var room_data = {
 				"hitbox_scale": 1
 			}
 		],
-		"image": "res://assets/sprites/room_1.png"
+		"image": "res://assets/sprites/Room0.png"
 	},
 	1: {
 		"links": {
@@ -111,7 +111,7 @@ static var room_data = {
 	},
 	4: {
 		"links": {
-			0: 2
+			3: 2
 		},
 		"interactions": [
 			{
@@ -122,7 +122,7 @@ static var room_data = {
 				"image_complete": "res://assets/sprites/potato.png" # TODO cleaned up pill bottles
 			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/Room_4.png"
 	},
 	9: {
 		"links": {
@@ -133,8 +133,8 @@ static var room_data = {
 				"id": 9,
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
-				"image": "res://assets/sprites/sink.png",
-				"image_complete": "res://assets/sprites/sink.png"
+				"image": "res://assets/sprites/Sinkandmirrorclean.png",
+				"image_complete": "res://assets/sprites/Sinkandmirrorclean.png"
 			}
 		],
 		"blockers": [
@@ -159,7 +159,7 @@ static var room_data = {
 				"hitbox_scale": 1
 			}
 		],
-		"image": "res://assets/sprites/room_1.png"
+		"image": "res://assets/sprites/room_ending.png"
 	}
 }
 
