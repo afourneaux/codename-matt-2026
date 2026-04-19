@@ -34,7 +34,7 @@ func _ready():
 	display_dialog_timer = Timer.new()
 	display_dialog_timer.autostart = false
 	display_dialog_timer.one_shot = true
-	display_dialog_timer.wait_time = 3.0
+	display_dialog_timer.wait_time = 2.0
 	display_dialog_timer.timeout.connect(display_next_dialog)
 	add_child(display_dialog_timer)
 	EventBus.queue_dialog.connect(_on_queue_dialog)

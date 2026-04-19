@@ -4,6 +4,7 @@ extends Object
 
 static var room_obj = preload("res://scenes/rooms/room.tscn")
 static var character_obj = preload("res://scenes/player/player_character.tscn")
+static var doppy_obj = preload("res://scenes/mini_games/doppy.tscn")
 const ROOM_CENTRE = Vector2(550,550)
 
 static var door_positions = {
@@ -22,7 +23,7 @@ static var room_data = {
 		"interactions": [
 			{
 				# sink
-				"id": 2,
+				"id": 4, # TODO: 2
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
 				"image": "res://assets/sprites/sink.png",
@@ -56,7 +57,8 @@ static var room_data = {
 	1: {
 		"links": {
 			3: 0,
-			0: 2
+			0: 2,
+			1: 3
 		},
 		"interactions": [
 			{
@@ -71,7 +73,8 @@ static var room_data = {
 	},
 	2: {
 		"links": {
-			2: 1
+			2: 1,
+			1: 4
 		},
 		"interactions": [
 			{
@@ -80,6 +83,43 @@ static var room_data = {
 				"position": Vector2(400, 450),
 				"image": "res://assets/sprites/potato.png",
 				"image_complete": ""
+			}
+		],
+		"image": "res://assets/sprites/Room_Shape.png"
+	},
+	3: {
+		"links": {
+			3: 1
+		},
+		"interactions": [
+			{
+				"id": 3,
+				"position": Vector2(750, 450),
+				"image": "res://icon.svg",
+				"image_complete": ""
+			}
+		],
+		"blockers": [
+			{
+				# block doppelganger
+				"position": Vector2(440, 440),
+				"hitbox_scale": 4,
+				"image": "res://icon.svg"
+			}
+		],
+		"image": "res://assets/sprites/Room_Shape.png"
+	},
+	4: {
+		"links": {
+			0: 2
+		},
+		"interactions": [
+			{
+				# pills
+				"id": 4,
+				"position": Vector2(800, 450),
+				"image": "res://assets/sprites/potato.png", # TODO Pill bottles on table in room
+				"image_complete": "res://assets/sprites/potato.png" # TODO cleaned up pill bottles
 			}
 		],
 		"image": "res://assets/sprites/Room_Shape.png"
@@ -157,4 +197,18 @@ static func create_room(room_id: int, last_door_position: int):
 		character.position = door_positions[new_door_position]
 	room.add_child(character)
 	room.character = character
+	if room_id == 3:
+		# spawn doppy
+		var doppy = doppy_obj.instantiate()
+		var opposite_door = {
+			0: 1,
+			1: 0,
+			2: 3,
+			3: 2
+		}
+		if last_door_position == -1:
+			doppy.position = ROOM_CENTRE
+		else:
+			doppy.position = door_positions[opposite_door[new_door_position]]
+		room.add_child(doppy)
 	return room

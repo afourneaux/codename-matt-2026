@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dllet7bp13rq3"]
+
+[ext_resource type="Texture2D" uid="uid://cqnolt8ws7ofj" path="res://assets/sprites/To_Do_List.png" id="1_87vlw"]
+[ext_resource type="Texture2D" uid="uid://dsn22m8sptwub" path="res://assets/sprites/sink.png" id="2_h5f8j"]
+[ext_resource type="Texture2D" uid="uid://d2ry6o8dvackv" path="res://assets/sprites/Patient chart.png" id="3_tuuq7"]
+
+[sub_resource type="GDScript" id="GDScript_0b7st"]
+resource_name = "MiniGame4"
+script/source = "extends Node2D
+signal completed
+
+
+var pill_obj = preload(\"res://scenes/mini_games/pill.tscn\")
+const SCREEN_CENTRE = Vector2(580, 300)
+const PILL_COUNT = 15
+var pills_collected = 0
+
+func _enter_tree() -> void:
+	GameState.in_mini_game = true
+
+func _exit_tree() -> void:
+	GameState.in_mini_game = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for i in range(PILL_COUNT):
+		var pill = pill_obj.instantiate()
+		pill.position = SCREEN_CENTRE
+		$Pills.add_child(pill)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if pills_collected >= PILL_COUNT:
+		completed.emit()
+
+
+func _on_capture_point_body_entered(body: Node2D) -> void:
+	body.queue_free()
+	pills_collected += 1
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h5f8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5f8j"]
+
+[sub_resource type="GDScript" id="GDScript_tuuq7"]
+resource_name = "Mouse"
+script/source = "extends RigidBody2D
+
+const SPEED = 500
+var target_position = position
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	target_position = get_global_mouse_position()
+
+func _physics_process(delta: float):
+	var forceVector = (target_position - position) * delta * SPEED
+	apply_central_force(forceVector)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5f8j"]
+
+[node name="MiniGame4" type="Node2D" unique_id=62865308]
+script = SubResource("GDScript_0b7st")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=522854981]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 1175.0
+offset_bottom = 670.0
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003118152]
+position = Vector2(573, 340)
+texture = ExtResource("1_87vlw")
+
+[node name="Edge" type="StaticBody2D" parent="." unique_id=373970743]
+position = Vector2(400, 100)
+rotation = 1.5707964
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge" unique_id=162179063]
+shape = SubResource("WorldBoundaryShape2D_h5f8j")
+
+[node name="Edge2" type="StaticBody2D" parent="." unique_id=908894521]
+position = Vector2(750, 100)
+rotation = 4.712389
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge2" unique_id=160275664]
+shape = SubResource("WorldBoundaryShape2D_h5f8j")
+
+[node name="Edge3" type="StaticBody2D" parent="." unique_id=1429220549]
+position = Vector2(400, 200)
+rotation = 3.1415927
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge3" unique_id=161473227]
+shape = SubResource("WorldBoundaryShape2D_h5f8j")
+
+[node name="Edge4" type="StaticBody2D" parent="." unique_id=1045271309]
+position = Vector2(400, 600)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge4" unique_id=1315384892]
+shape = SubResource("WorldBoundaryShape2D_h5f8j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1587359049]
+position = Vector2(580, 630)
+texture = ExtResource("2_h5f8j")
+
+[node name="CapturePoint" type="Area2D" parent="." unique_id=2068536078]
+position = Vector2(580, 600)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CapturePoint" unique_id=1541965052]
+shape = SubResource("RectangleShape2D_h5f8j")
+
+[node name="Pills" type="Node2D" parent="." unique_id=1152887569]
+
+[node name="Mouse" type="RigidBody2D" parent="." unique_id=117484689]
+collision_layer = 80
+collision_mask = 80
+script = SubResource("GDScript_tuuq7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mouse" unique_id=2098058980]
+texture = ExtResource("3_tuuq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse" unique_id=307941039]
+shape = SubResource("CircleShape2D_h5f8j")
+
+[connection signal="body_entered" from="CapturePoint" to="." method="_on_capture_point_body_entered"]

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cxm2p534m01le"]
 
+[ext_resource type="Texture2D" uid="uid://dt6atkq3ec3w3" path="res://assets/sprites/Text_Box_Sprite_Sheet.png" id="1_68288"]
+
 [sub_resource type="GDScript" id="GDScript_l8042"]
 resource_name = "Interactible"
 script/source = "extends StaticBody2D
@@ -11,10 +13,23 @@ var image
 var image_complete
 var blocker_scale
 
+# Label wave effect
+var _total_time = 0
+var _initial_y
+const AMPLITUDE = 10 # Higher = higher wave
+const PERIOD = 2 # Higher = faster wave
+
 func _ready():
 	set_image()
 	$BlockerBox.shape.radius *= blocker_scale
+	$Label/Text.text = tr($Label/Text.text)
 	EventBus.task_completed.connect(on_task_complete)
+	$Label.play(\"default\")
+	_initial_y = $Label.position.y
+
+func _process(delta):
+	_total_time += delta
+	$Label.position.y = _initial_y + (sin(_total_time * PERIOD) * AMPLITUDE)
 
 func set_image(force_complete = false):
 	var _image = image_complete if force_complete or GameState.task_completion.get(id, false) else image
@@ -24,16 +39,20 @@ func set_image(force_complete = false):
 	$Sprite.texture = load(_image)
 
 func on_approached(body):
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and body.IS_PLAYER:
 		$Sprite.modulate = Color.RED
 		on_approach.emit(id)
+		if !GameState.has_interacted:
+			$Label.visible = true
 
 func on_departed(body):
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and body.IS_PLAYER:
 		$Sprite.modulate = Color.WHITE
 		on_leave.emit()
+		$Label.visible = false
 
 func on_task_complete(_id):
+	GameState.has_interacted = true
 	if _id == id:
 		set_image(true)
 "
@@ -42,6 +61,91 @@ func on_task_complete(_id):
 resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8042"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s5ls"]
+atlas = ExtResource("1_68288")
+region = Rect2(0, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mae40"]
+atlas = ExtResource("1_68288")
+region = Rect2(46, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqefi"]
+atlas = ExtResource("1_68288")
+region = Rect2(92, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or6w8"]
+atlas = ExtResource("1_68288")
+region = Rect2(138, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcubl"]
+atlas = ExtResource("1_68288")
+region = Rect2(184, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqfaq"]
+atlas = ExtResource("1_68288")
+region = Rect2(230, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_787fo"]
+atlas = ExtResource("1_68288")
+region = Rect2(276, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inl7h"]
+atlas = ExtResource("1_68288")
+region = Rect2(322, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bnsl"]
+atlas = ExtResource("1_68288")
+region = Rect2(368, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76hra"]
+atlas = ExtResource("1_68288")
+region = Rect2(414, 0, 46, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35ns"]
+atlas = ExtResource("1_68288")
+region = Rect2(460, 0, 46, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3wlv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s5ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mae40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqefi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or6w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcubl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqfaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_787fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inl7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bnsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76hra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35ns")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Interactible" type="StaticBody2D" unique_id=1940869371]
 collision_layer = 4
@@ -60,6 +164,29 @@ shape = SubResource("CircleShape2D_ab2as")
 position = Vector2(0, 25)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_l8042")
+
+[node name="Label" type="AnimatedSprite2D" parent="." unique_id=1444512768]
+visible = false
+position = Vector2(0, -100)
+sprite_frames = SubResource("SpriteFrames_i3wlv")
+frame_progress = 0.44111148
+
+[node name="Text" type="RichTextLabel" parent="Label" unique_id=1793831120]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -19.0
+offset_right = -23.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
+text = "interact"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="on_approached"]
 [connection signal="body_exited" from="Area2D" to="." method="on_departed"]

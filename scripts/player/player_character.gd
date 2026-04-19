@@ -2,6 +2,7 @@ extends CharacterBody2D
 signal on_interact
 
 const SPEED = 200.0
+const IS_PLAYER = true
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 

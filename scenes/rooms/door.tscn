@@ -9,12 +9,10 @@ var door_id: int = -1
 var enabled = true
 
 func _body_entered(body: Node2D) -> void:
-	if enabled:
+	if enabled and body is CharacterBody2D and body.IS_PLAYER:
 		door_entered.emit(door_id)
 
-
 func _on_body_exited(body: Node2D) -> void:
-	print(\"exit\")
 	enabled = true
 "
 
