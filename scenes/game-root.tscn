@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gq6epy8wcapt"]
 
 [ext_resource type="PackedScene" uid="uid://ddu7gjrk70p2s" path="res://scenes/dialogue/dialogue_box.tscn" id="1_ky4iy"]
-[ext_resource type="PackedScene" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
+[ext_resource type="PackedScene" uid="uid://c2woextvlifjc" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
 resource_name = "GameRoot"
@@ -37,6 +37,7 @@ script/source = "extends Node2D
 
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var mini_game_0_prefab = preload(\"res://scenes/mini_games/mini_game_0.tscn\") 
+var mini_game_1_prefab = preload(\"res://scenes/mini_games/mini_game_1.tscn\")
 var active_room: Node2D
 @onready var transition: ColorRect = $\"../UI/ColorRect\"
 
@@ -79,8 +80,24 @@ func on_interact():
 		)
 	elif active_room.interactible == 1:
 		EventBus.task_completed.emit(1)
+
+	elif active_room.interactible == 2:
+		var checked_mirror = 0
+		while checked_mirror < 2:
+			var mini_game_1 = mini_game_1_prefab.instantiate()
+			add_child(mini_game_1)
+			mini_game_1.completed.connect(
+				func():
+					remove_child(mini_game_1)
+		)
+			checked_mirror += 1
+		if checked_mirror == 2:
+			pass
+			# TODO = add easter egg logic 
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible
+	
+	
 "
 
 [sub_resource type="GDScript" id="GDScript_rckx3"]
