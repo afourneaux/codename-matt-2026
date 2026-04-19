@@ -9,8 +9,8 @@ script/source = "extends Node
 
 var task_list = {
 	0: \"task_string1\",
-	3: \"task_string3\",
-	4: \"task_string4\"
+	4: \"task_string4\",
+	5: \"task_string5\"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -126,7 +126,6 @@ func on_interact():
 				func():
 					remove_child(mini_game_4)
 					EventBus.task_completed.emit(4)
-					GameState.task_completion[4] = true
 			)
 	elif active_room.interactible == 5:
 		Audio.play_sfx(\"clack\")
@@ -142,7 +141,7 @@ func on_interact():
 			mini_game_5.completed.connect(
 				func():
 					remove_child(mini_game_5)
-					GameState.task_completion[5] = true
+					EventBus.task_completed.emit(5)
 					EventBus.display_dialog.emit(\"bandaged_wood2\")
 			)
 	elif active_room.interactible == 8:

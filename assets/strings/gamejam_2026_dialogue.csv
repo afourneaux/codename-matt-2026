@@ -4,8 +4,8 @@ room0_string0,[wave]My head hurts[/wave],[wave]J'ai mal a la tete[/wave]
 room0_string1,[wave]Where am I?[/wave],[wave]Ou suis-je?[/wave]
 room0_string2,I should look into my daily tasks.(Q), Je devrais verifier mes taches regulieres.(Q)
 task_string1,Give [color=red]IV[/color] to patient,Donner un [color=red]IV[/color] au patient
-task_string3,Fetch some guff from the supply closet,Fetchez la vache
 task_string4,Organize the pharmacy,Organiser la pharmacie
+task_string5,Change patient's bandages,Changer les bandages du patient
 play_button,Wake up,Reveillez-vous
 quit_button,Quit,Quitter
 potato_string1,[color=brown]Who are you? You're not the usual nurse.[/color],[color=brown]Qui êtes vous? Vous n\'êtes pas l'infirmière habituelle.[/color]

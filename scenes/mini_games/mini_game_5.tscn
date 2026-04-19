@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bud4n7mk1kcn7"]
 
-[ext_resource type="Texture2D" uid="uid://d0sl11sk5bax4" path="res://assets/sprites/potatozoom.png" id="1_ojowo"]
-[ext_resource type="Texture2D" uid="uid://bjgrvblixnaoc" path="res://assets/sprites/Needlezoom.png" id="2_smj4o"]
+[ext_resource type="Texture2D" uid="uid://dv4nv7nixc5ap" path="res://assets/sprites/Bandagecleanzoom.png" id="1_wmmnj"]
+[ext_resource type="Texture2D" uid="uid://cmtp3745c3oyy" path="res://assets/sprites/Bandagedirtyzoom.png" id="2_ojowo"]
+[ext_resource type="Texture2D" uid="uid://cn4cw8fcf5t0o" path="res://assets/sprites/Peglegbrokenzoom.png" id="3_smj4o"]
 
 [sub_resource type="GDScript" id="GDScript_77cm3"]
 script/source = "extends Node2D
@@ -77,7 +78,7 @@ func _on_area_exited(area):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7t1l"]
-size = Vector2(123, 43)
+size = Vector2(100, 150)
 
 [sub_resource type="GDScript" id="GDScript_7ht0x"]
 script/source = "extends Area2D
@@ -122,7 +123,7 @@ func _on_area_exited(area):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lvoa"]
-size = Vector2(203, 174)
+size = Vector2(100, 174)
 
 [node name="MiniGame5" type="Node2D" unique_id=859721148]
 script = SubResource("GDScript_77cm3")
@@ -134,13 +135,11 @@ script = SubResource("GDScript_3l8m7")
 
 [node name="bandage_sprite" type="Sprite2D" parent="clean_bandage" unique_id=1777923234]
 position = Vector2(0, 4.5)
-scale = Vector2(1, 0.13345195)
-texture = ExtResource("2_smj4o")
+texture = ExtResource("1_wmmnj")
 flip_h = true
 region_rect = Rect2(0, 0, 50, 50)
 
 [node name="bandage_colision" type="CollisionShape2D" parent="clean_bandage" unique_id=1784550331]
-position = Vector2(0.5, -15.5)
 shape = SubResource("RectangleShape2D_g7t1l")
 
 [node name="dirty_bandage" type="Area2D" parent="." unique_id=1482960006]
@@ -150,13 +149,11 @@ script = SubResource("GDScript_7ht0x")
 
 [node name="bandage_sprite" type="Sprite2D" parent="dirty_bandage" unique_id=1957731363]
 position = Vector2(0, -0.5)
-scale = Vector2(1, 0.115658365)
-texture = ExtResource("2_smj4o")
+texture = ExtResource("2_ojowo")
 flip_h = true
 region_rect = Rect2(0, 0, 50, 50)
 
 [node name="bandage_colision" type="CollisionShape2D" parent="dirty_bandage" unique_id=926413810]
-position = Vector2(0.5, -15.5)
 shape = SubResource("RectangleShape2D_g7t1l")
 
 [node name="wood" type="Area2D" parent="." unique_id=587643905]
@@ -164,7 +161,7 @@ z_index = 2
 position = Vector2(920, 224)
 
 [node name="wood_sprite" type="Sprite2D" parent="wood" unique_id=122524726]
-texture = ExtResource("1_ojowo")
+texture = ExtResource("3_smj4o")
 region_rect = Rect2(0, 0, 50, 50)
 
 [node name="wood_colision" type="CollisionShape2D" parent="wood" unique_id=1722813684]
