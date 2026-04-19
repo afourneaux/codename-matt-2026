@@ -55,7 +55,7 @@ func _on_capture_point_body_entered(body: Node2D) -> void:
 resource_name = "Mouse"
 script/source = "extends RigidBody2D
 
-const SPEED = 500
+const SPEED = 1000
 var target_position = position
 
 # Called when the node enters the scene tree for the first time.

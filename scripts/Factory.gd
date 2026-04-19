@@ -24,7 +24,7 @@ static var room_data = {
 			{
 				# sink
 				"id": 2,
-				"position": Vector2(600, 350),
+				"position": Vector2(600, 300),
 				"hitbox_scale": 4,
 				"image": "res://assets/sprites/Sinkandmirror.png",
 				"image_complete": "res://assets/sprites/Sinkandmirror.png"
@@ -126,7 +126,7 @@ static var room_data = {
 			{
 				# finale
 				"id": 9,
-				"position": Vector2(600, 350),
+				"position": Vector2(600, 300),
 				"hitbox_scale": 4,
 				"image": "res://assets/sprites/Sinkandmirrorclean.png",
 				"image_complete": "res://assets/sprites/Sinkandmirrorclean.png"
