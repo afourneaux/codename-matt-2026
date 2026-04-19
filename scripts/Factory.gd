@@ -154,7 +154,7 @@ static var room_data = {
 				"hitbox_scale": 1
 			}
 		],
-		"image": "res://assets/sprites/room_ending.png"
+		"image": "res://assets/sprites/Room_ending.png"
 	}
 }
 
