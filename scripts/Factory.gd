@@ -92,9 +92,9 @@ static var room_data = {
 		"interactions": [
 			{
 				"id": 3,
-				"position": Vector2(450, 550),
+				"position": Vector2(750, 450),
 				"image": "res://icon.svg",
-				"image_complete": "res://icon.svg"
+				"image_complete": ""
 			}
 		],
 		"image": "res://assets/sprites/Room_Shape.png"
