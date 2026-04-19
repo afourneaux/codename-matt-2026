@@ -39,6 +39,7 @@ var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var mini_game_0_prefab = preload(\"res://scenes/mini_games/mini_game_0.tscn\") 
 var mini_game_1_prefab = preload(\"res://scenes/mini_games/mini_game_1.tscn\")
 var mini_game_8_prefab = preload(\"res://scenes/mini_games/mini_game_8.tscn\")
+var mini_game_9_prefab = preload(\"res://scenes/mini_games/mini_game_9.tscn\")
 var active_room: Node2D
 @onready var transition: ColorRect = $\"../UI/ColorRect\"
 
@@ -100,12 +101,13 @@ func on_interact():
 				remove_child(mini_game_8)
 				change_room(-1, 9)
 		)
-		var mini_game_1 = mini_game_1_prefab.instantiate()
-		add_child(mini_game_1)
-		mini_game_1.completed.connect(
+	elif active_room.interactible == 9:
+		var mini_game_9 = mini_game_9_prefab.instantiate()
+		add_child(mini_game_9)
+		mini_game_9.completed.connect(
 			func():
-				remove_child(mini_game_1)
-				EventBus.task_completed.emit(2)
+				remove_child(mini_game_9)
+				#TODO - END GAME
 		)
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible

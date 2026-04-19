@@ -15,6 +15,7 @@ var character: CharacterBody2D
 var door_obj = preload(\"res://scenes/rooms/door.tscn\")
 var interactible_obj = preload(\"res://scenes/rooms/interactible.tscn\")
 var blocker_obj = preload(\"res://scenes/rooms/blocker.tscn\")
+var interactibles = {}
 
 func create_link(id, pos, target, enabled):
 	var door = door_obj.instantiate()
@@ -35,6 +36,7 @@ func create_interaction(interaction_data):
 	interactible.on_approach.connect(on_approach_interactible)
 	interactible.on_leave.connect(on_leave_interactible)
 	$Interactibles.add_child(interactible)
+	interactibles[interactible.id] = interactible
 
 func create_blocker(blocker_data):
 	var blocker = blocker_obj.instantiate()
@@ -49,6 +51,10 @@ func _on_door_entered(door_id):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$BGImage.texture = load(image)
+	# special logic for potato IV room
+	if room_id == 1 and GameState.task_completion[0]:
+		# when re-entering potato IV room after potato is ived, potato iv moved
+		interactibles[0].position = Vector2(randi_range(408, 724), randi_range(350, 447))
 
 func on_approach_interactible(id):
 	interactible = id

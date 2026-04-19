@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b0cxrm1ioepgh"]
+
+[ext_resource type="Texture2D" uid="uid://bhgqnb0uyh754" path="res://assets/sprites/Main_character_ending.png" id="1_8swbp"]
+
+[sub_resource type="GDScript" id="GDScript_gx4ip"]
+resource_name = "mini_game_9"
+script/source = "extends Node2D
+signal completed
+signal on_interact
+
+func _enter_tree() -> void:
+	GameState.in_mini_game = true
+
+func _exit_tree():
+	#GameState.in_mini_game = false
+	pass
+
+func _input(event):
+	if event.is_action_pressed(\"interact\"):
+		completed.emit()
+"
+
+[node name="MiniGame9" type="Node2D" unique_id=677959257]
+script = SubResource("GDScript_gx4ip")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=685977791]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 1175.0
+offset_bottom = 670.0
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=771436500]
+position = Vector2(573, 340)
+texture = ExtResource("1_8swbp")
