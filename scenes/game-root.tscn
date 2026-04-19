@@ -151,6 +151,7 @@ func on_interact():
 		add_child(mini_game_8)
 		mini_game_8.completed.connect(
 			func():
+				EventBus.task_completed.emit(8)
 				remove_child(mini_game_8)
 				change_room(-1, 9)
 		)

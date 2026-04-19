@@ -31,3 +31,6 @@ static func are_tasks_complete() -> bool:
 
 static func freeze_inputs() -> bool:
 	return in_minigame or in_dialogue
+
+static func is_endgame():
+	return task_completion[8]
