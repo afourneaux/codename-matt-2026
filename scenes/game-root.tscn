@@ -107,12 +107,19 @@ func on_interact():
 		EventBus.task_completed.emit(3)
 			
 	elif active_room.interactible == 4:
-		var mini_game_4 = mini_game_4_prefab.instantiate()
-		add_child(mini_game_4)
-		mini_game_4.completed.connect(
-			func():
-				remove_child(mini_game_4)
-		)
+		# try to open pill lock
+		if not GameState.task_completion[3]:
+			# no key
+			EventBus.display_dialog.emit(\"locked_locker\")
+		elif not GameState.task_completion[4]:
+			# not collected pills yet
+			var mini_game_4 = mini_game_4_prefab.instantiate()
+			add_child(mini_game_4)
+			mini_game_4.completed.connect(
+				func():
+					remove_child(mini_game_4)
+					GameState.task_completion[4] = true
+			)
 
 	elif active_room.interactible == 8:
 		var mini_game_8 = mini_game_8_prefab.instantiate()

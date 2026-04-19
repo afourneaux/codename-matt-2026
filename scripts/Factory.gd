@@ -69,7 +69,7 @@ static var room_data = {
 				"image_complete": "res://assets/sprites/potatowithiv.png"
 			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/room_1.png"
 	},
 	2: {
 		"links": {
@@ -85,7 +85,7 @@ static var room_data = {
 				"image_complete": ""
 			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/Room_2.png"
 	},
 	3: {
 		"links": {
@@ -93,21 +93,16 @@ static var room_data = {
 		},
 		"interactions": [
 			{
+				# key
 				"id": 3,
 				"position": Vector2(750, 450),
 				"image": "res://icon.svg",
-				"image_complete": ""
+				"image_complete": "res://assets/sprites/potato.png"
 			}
 		],
 		"blockers": [
-			{
-				# block doppelganger
-				"position": Vector2(440, 440),
-				"hitbox_scale": 4,
-				"image": "res://icon.svg"
-			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/Room_3.png"
 	},
 	4: {
 		"links": {
@@ -200,7 +195,7 @@ static func create_room(room_id: int, last_door_position: int):
 	if room_id == 3:
 		# spawn doppy
 		var doppy_count = 1
-		if GameState.doppy_room_visited:
+		if GameState.doppy_room_visited and GameState.task_completion[3]:
 			doppy_count = 10
 		spawn_doppies(doppy_count, room, last_door_position, new_door_position)
 		GameState.doppy_room_visited = true
