@@ -22,7 +22,7 @@ static var room_data = {
 		"interactions": [
 			{
 				# sink
-				"id": 2,
+				"id": 4, # TODO: 2
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
 				"image": "res://assets/sprites/sink.png",

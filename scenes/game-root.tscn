@@ -8,7 +8,9 @@ resource_name = "GameRoot"
 script/source = "extends Node
 
 var task_list = {
-	0: \"task_string1\"
+	0: \"task_string1\",
+	3: \"task_string3\",
+	4: \"task_string4\"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +40,7 @@ script/source = "extends Node2D
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var mini_game_0_prefab = preload(\"res://scenes/mini_games/mini_game_0.tscn\") 
 var mini_game_1_prefab = preload(\"res://scenes/mini_games/mini_game_1.tscn\")
+var mini_game_4_prefab = preload(\"res://scenes/mini_games/mini_game_4.tscn\")
 var mini_game_8_prefab = preload(\"res://scenes/mini_games/mini_game_8.tscn\")
 var mini_game_9_prefab = preload(\"res://scenes/mini_games/mini_game_9.tscn\")
 var active_room: Node2D
@@ -95,12 +98,11 @@ func on_interact():
 			# TODO = add easter egg logic 
 			
 	elif active_room.interactible == 4:
-		var mini_game_8 = mini_game_8_prefab.instantiate()
-		add_child(mini_game_8)
-		mini_game_8.completed.connect(
+		var mini_game_4 = mini_game_4_prefab.instantiate()
+		add_child(mini_game_4)
+		mini_game_4.completed.connect(
 			func():
-				remove_child(mini_game_8)
-				change_room(-1, 9)
+				remove_child(mini_game_4)
 		)
 	elif active_room.interactible == 8:
 		var mini_game_8 = mini_game_8_prefab.instantiate()
