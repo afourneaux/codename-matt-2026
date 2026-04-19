@@ -197,7 +197,7 @@ static func create_room(room_id: int, last_door_position: int):
 		character.position = door_positions[new_door_position]
 	room.add_child(character)
 	room.character = character
-	if room_id == 1:
+	if room_id == 3:
 		# spawn doppy
 		var doppy = doppy_obj.instantiate()
 		var opposite_door = {
