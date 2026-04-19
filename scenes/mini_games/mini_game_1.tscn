@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dadpka2rpp48g"]
+
+[ext_resource type="Script" uid="uid://c8rstj1o1t7v7" path="res://scripts/mini-game/mini_game_1.gd" id="1_xgr0k"]
+[ext_resource type="Texture2D" uid="uid://0b51qnc6b8h4" path="res://assets/sprites/Main_character_closeup.png" id="2_k11qg"]
+
+[node name="MiniGame2" type="Node2D" unique_id=677959257]
+script = ExtResource("1_xgr0k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=685977791]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 1175.0
+offset_bottom = 670.0
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=771436500]
+position = Vector2(573, 340)
+texture = ExtResource("2_k11qg")

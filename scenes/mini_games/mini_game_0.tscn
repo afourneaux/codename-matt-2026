@@ -10,6 +10,12 @@ script/source = "extends Node2D
 
 signal completed
 
+func _enter_tree() -> void:
+	GameState.in_mini_game = true
+
+func _exit_tree() -> void:
+	GameState.in_mini_game = false
+
 func _ready() -> void:
 	if GameState.task_completion[0] or not GameState.task_completion[1]:
 		queue_free()
@@ -122,4 +128,4 @@ offset_left = 7.0
 offset_right = 1287.0
 offset_bottom = 720.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.8039216)
+color = Color(0, 0, 0, 0.8666667)
