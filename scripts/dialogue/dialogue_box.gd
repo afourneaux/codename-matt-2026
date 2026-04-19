@@ -50,3 +50,4 @@ func _ready():
 	EventBus.display_dialog.connect(_on_display_dialog)
 	EventBus.queue_dialog.emit("room0_string0")
 	EventBus.queue_dialog.emit("room0_string1")
+	EventBus.queue_dialog.emit("room0_string2")

@@ -55,6 +55,66 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1099.995, 1.43)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/potato3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 595.325)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/potato3:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50.00061, 50.00006)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/potato4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1099.995, 597.545)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/potato4:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50.00061, 50.000244)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/potato4:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2901961, 0.37254903, 0.5647059, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ob46e"]
 resource_name = "background"
@@ -91,7 +151,7 @@ tracks/2/path = NodePath("CanvasLayer/potato2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 11),
+"times": PackedFloat32Array(0, 10.066667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1099.995, 1.43), Vector2(0, 595.7)]
@@ -103,10 +163,70 @@ tracks/3/path = NodePath("CanvasLayer/potato2:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 11),
+"times": PackedFloat32Array(0, 10.033334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(50.00061, 50), Vector2(50.00061, 50)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/potato3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 10.033594),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 595.325), Vector2(1099.205, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/potato3:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 10.033594),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50.00061, 50.00006), Vector2(50.00061, 50.00006)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/potato4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1099.995, 597.545), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/potato4:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 10.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50.00061, 50.000244), Vector2(50.00061, 50.000244)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/potato4:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2901961, 0.37254903, 0.5647059, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uqeha"]
@@ -165,6 +285,7 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=244779669]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0ebjn")
 text = "Wake Up"
 
@@ -173,11 +294,13 @@ layout_mode = 2
 
 [node name="Jouer" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1557175687]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0ebjn")
-text = "Reveilles-toi"
+text = "Reveillez-vous"
 
 [node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1437996583]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0ebjn")
 text = "Quit"
 
@@ -204,6 +327,20 @@ offset_left = 1099.995
 offset_top = 1.43
 offset_right = 1149.9956
 offset_bottom = 51.43
+texture = ExtResource("2_ob46e")
+
+[node name="potato3" type="TextureRect" parent="CanvasLayer" unique_id=2120815573]
+offset_top = 595.325
+offset_right = 50.00061
+offset_bottom = 645.3251
+texture = ExtResource("2_ob46e")
+
+[node name="potato4" type="TextureRect" parent="CanvasLayer" unique_id=38074286]
+modulate = Color(0.2901961, 0.37254903, 0.5647059, 1)
+offset_left = 1099.995
+offset_top = 597.545
+offset_right = 1149.9956
+offset_bottom = 647.5452
 texture = ExtResource("2_ob46e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=294893503]
