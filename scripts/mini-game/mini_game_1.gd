@@ -10,8 +10,5 @@ func _exit_tree():
 
 func _input(event):
 	if event.is_action_pressed("interact"):
+		get_viewport().set_input_as_handled()
 		completed.emit()
-				
-func _ready():
-	if GameState.task_completion[2]:
-		queue_free()
