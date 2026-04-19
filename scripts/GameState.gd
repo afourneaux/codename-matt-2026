@@ -30,5 +30,4 @@ static func are_tasks_complete() -> bool:
 	return true
 
 static func freeze_inputs() -> bool:
-	print(in_minigame, in_dialogue)
 	return in_minigame or in_dialogue
