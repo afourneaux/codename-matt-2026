@@ -84,17 +84,13 @@ func on_interact():
 
 	elif active_room.interactible == 2:
 		EventBus.queue_dialog.emit(\"minigame1_string1\")
-		while GameState.checked_mirror < 2:
-			var mini_game_1 = mini_game_1_prefab.instantiate()
-			add_child(mini_game_1)
-			mini_game_1.completed.connect(
-				func():
-					remove_child(mini_game_1)
-					EventBus.task_completed.emit(2)
+		var mini_game_1 = mini_game_1_prefab.instantiate()
+		add_child(mini_game_1)
+		mini_game_1.completed.connect(
+			func():
+				remove_child(mini_game_1)
+				EventBus.task_completed.emit(2)
 		)
-			GameState.checked_mirror += 1
-		if GameState.checked_mirror == 2:
-			print(\"we have looked at ourselves 3 times now!\")
 			# TODO = add easter egg logic 
 	elif active_room.interactible == 8:
 		var mini_game_8 = mini_game_8_prefab.instantiate()
@@ -103,6 +99,13 @@ func on_interact():
 			func():
 				remove_child(mini_game_8)
 				change_room(-1, 9)
+		)
+		var mini_game_1 = mini_game_1_prefab.instantiate()
+		add_child(mini_game_1)
+		mini_game_1.completed.connect(
+			func():
+				remove_child(mini_game_1)
+				EventBus.task_completed.emit(2)
 		)
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible
