@@ -119,6 +119,7 @@ func on_interact():
 			mini_game_4.completed.connect(
 				func():
 					remove_child(mini_game_4)
+					EventBus.task_completed.emit(4)
 					GameState.task_completion[4] = true
 			)
 	elif active_room.interactible == 5:
