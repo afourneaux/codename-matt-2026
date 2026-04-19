@@ -6,6 +6,7 @@ task_string1,Give [color=red]IV[/color] to patient,Donner un [color=red]IV[/colo
 play_button,Play,Jouer
 quit_button,Quit,Quitter
 potato_string1,[color=brown]Who are you? You're not the usual nurse.[/color],[color=brown]Qui êtes vous? Vous n\'êtes pas l'infirmière habituelle.[/color]
+minigame1_string1,Another day at work for ole' Matt...,Une autre journée au travail pour Matt...
 interact,Press E to interact,
 chart_title,Patient Chart,Fiche de Patient
 chart_1,Patient:,Patient:

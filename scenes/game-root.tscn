@@ -83,6 +83,7 @@ func on_interact():
 		EventBus.task_completed.emit(1)
 
 	elif active_room.interactible == 2:
+		EventBus.queue_dialog.emit(\"minigame1_string1\")
 		while GameState.checked_mirror < 2:
 			var mini_game_1 = mini_game_1_prefab.instantiate()
 			add_child(mini_game_1)
@@ -166,17 +167,8 @@ script = SubResource("GDScript_rckx3")
 
 [node name="Todo" parent="UI" unique_id=1561376941 instance=ExtResource("2_jcw77")]
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 400.0
-offset_bottom = 500.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_top = -250.0
+offset_bottom = 250.0
 
 [node name="ColorRect" type="ColorRect" parent="UI" unique_id=1956519339]
 layout_mode = 0
