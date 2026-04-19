@@ -21,7 +21,7 @@ static var potato_alone_room_visited = 0
 static var current_room_id = 0
 
 static func are_tasks_complete() -> bool:
-	return true
+	return true #TODO REMOVE CHEAT MODE
 	for task in required_tasks:
 		if not task_completion[task]:
 			return false
