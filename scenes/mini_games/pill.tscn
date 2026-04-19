@@ -2,16 +2,47 @@
 
 [ext_resource type="Texture2D" uid="uid://dlcwhw2sgn5ae" path="res://assets/sprites/potato.png" id="1_5yopb"]
 
+[sub_resource type="GDScript" id="GDScript_5yopb"]
+resource_name = "Pill"
+script/source = "extends RigidBody2D
+
+var colour = Color.WHITE
+var move_timer = 0
+var next_move = 0
+const MOVE_AVG_DELAY = 10
+const MOVE_DELAY_DEVIATION = 7
+const MOVE_AVG_FORCE = 50
+const MOVE_FORCE_DEVIATION = 30
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Image.modulate = colour
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	move_timer += delta
+	if move_timer >= next_move:
+		move_timer = 0
+		next_move = randfn(MOVE_AVG_DELAY, MOVE_DELAY_DEVIATION)
+		var move_force = randfn(MOVE_AVG_FORCE, MOVE_FORCE_DEVIATION)
+		var move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		apply_central_impulse(move_direction * move_force)
+		
+"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5f8j"]
 
 [node name="Pill" type="RigidBody2D" unique_id=208291501]
 collision_layer = 112
 collision_mask = 112
+script = SubResource("GDScript_5yopb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240529156]
-scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_h5f8j")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1403861531]
+[node name="Image" type="Sprite2D" parent="." unique_id=1403861531]
 rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_5yopb")
