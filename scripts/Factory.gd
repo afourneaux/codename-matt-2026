@@ -139,13 +139,22 @@ static func create_room(room_id: int, last_door_position: int):
 	var new_door_position = (last_door_position + 2) % 4
 	for link in data["links"]:
 		room.create_link(
-			link, 
-			door_positions[link], 
-			data["links"][link], 
+			link,
+			door_positions[link],
+			data["links"][link],
 			last_door_position == -1 or link != new_door_position
 		)
 	for interaction in data.get("interactions", []):
 		room.create_interaction(interaction)
+	if room_id == 0 and GameState.are_tasks_complete():
+		room.create_interaction(
+			{
+				# IV minigame
+				"id": 8,
+				"position": Vector2(750, 460),
+				"image": "res://assets/sprites/iv.png",
+				"image_complete": ""
+			})
 	for blocker in data.get("blockers", []):
 		room.create_blocker(blocker)
 	var character = character_obj.instantiate()

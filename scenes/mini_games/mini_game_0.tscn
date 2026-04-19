@@ -9,7 +9,6 @@
 script/source = "extends Node2D
 
 signal completed
-
 func _enter_tree() -> void:
 	GameState.in_mini_game = true
 

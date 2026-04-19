@@ -82,17 +82,17 @@ func on_interact():
 		EventBus.task_completed.emit(1)
 
 	elif active_room.interactible == 2:
-		var checked_mirror = 0
-		while checked_mirror < 2:
+		while GameState.checked_mirror < 2:
 			var mini_game_1 = mini_game_1_prefab.instantiate()
 			add_child(mini_game_1)
 			mini_game_1.completed.connect(
 				func():
 					remove_child(mini_game_1)
+					EventBus.task_completed.emit(2)
 		)
-			checked_mirror += 1
-		if checked_mirror == 2:
-			pass
+			GameState.checked_mirror += 1
+		if GameState.checked_mirror == 2:
+			print(\"we have looked at ourselves 3 times now!\")
 			# TODO = add easter egg logic 
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible

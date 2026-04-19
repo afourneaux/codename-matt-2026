@@ -1,14 +1,21 @@
 extends Node
 
-#0 IV / potato
-#1 potato pickup
-#2 mirror
-#3 chart
-#4 final mirror
-const TOTAL_INTERACTIBLES = 3
-static var task_completion = []
+static var task_completion = {
+	0: false, #0 IV / potato
+	1: false, #1 potato pickup
+	2: false, #2 mirror
+	8: false, #8 chart
+	9: false, #9 final mirror
+}
+# Tasks required for the chart to appear in room 0
+static var required_tasks = [
+	0, 1, 2
+]
 static var in_mini_game = false
+static var checked_mirror = 0
 
-func _ready():
-	for i in range(TOTAL_INTERACTIBLES):
-		task_completion.append(false)
+static func are_tasks_complete() -> bool:
+	for task in required_tasks:
+		if not task_completion[task]:
+			return false
+	return true
