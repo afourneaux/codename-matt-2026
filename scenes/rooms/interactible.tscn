@@ -39,14 +39,14 @@ func set_image(force_complete = false):
 	$Sprite.texture = load(_image)
 
 func on_approached(body):
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and body.IS_PLAYER:
 		$Sprite.modulate = Color.RED
 		on_approach.emit(id)
 		if !GameState.has_interacted:
 			$Label.visible = true
 
 func on_departed(body):
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and body.IS_PLAYER:
 		$Sprite.modulate = Color.WHITE
 		on_leave.emit()
 		$Label.visible = false

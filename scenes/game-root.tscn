@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gq6epy8wcapt"]
 
 [ext_resource type="PackedScene" uid="uid://ddu7gjrk70p2s" path="res://scenes/dialogue/dialogue_box.tscn" id="1_ky4iy"]
-[ext_resource type="PackedScene" uid="uid://c2woextvlifjc" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
+[ext_resource type="PackedScene" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
 resource_name = "GameRoot"
@@ -95,7 +95,9 @@ func on_interact():
 				remove_child(mini_game_1)
 				EventBus.task_completed.emit(2)
 		)
-			# TODO = add easter egg logic 
+
+	elif active_room.interactible == 3:
+		EventBus.task_completed.emit(3)
 			
 	elif active_room.interactible == 4:
 		var mini_game_4 = mini_game_4_prefab.instantiate()
@@ -104,6 +106,7 @@ func on_interact():
 			func():
 				remove_child(mini_game_4)
 		)
+
 	elif active_room.interactible == 8:
 		var mini_game_8 = mini_game_8_prefab.instantiate()
 		add_child(mini_game_8)
