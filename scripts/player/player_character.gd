@@ -31,13 +31,13 @@ func get_input():
 		z_index = int(position.y / 20) + 10
 	
 func _input(event):
-	if GameState.freeze_inputs:
+	if GameState.freeze_inputs():
 		return
 	if event.is_action_pressed("interact"):
 		on_interact.emit()
 
 func _physics_process(delta):
-	if GameState.freeze_inputs:
+	if GameState.freeze_inputs():
 		return
 	get_input()
 	interaction()

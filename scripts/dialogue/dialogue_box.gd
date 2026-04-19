@@ -7,10 +7,9 @@ var text: RichTextLabel
 
 
 var dialogue_queue = []
-var in_dialogue = false
 
 func _on_queue_dialog(dialog_string_id):
-	if not in_dialogue:
+	if not GameState.in_dialogue:
 		start_displaying_dialog(dialog_string_id)
 	else:
 		dialogue_queue.append(dialog_string_id)
@@ -23,8 +22,7 @@ func start_displaying_dialog(dialog_string_id):
 	text.visible = true
 	shade_overlay.visible = true
 	text.text = dialog_string_id
-	GameState.freeze_inputs = true
-	in_dialogue = true
+	GameState.in_dialogue = true
 
 func display_next_dialog():
 	if not dialogue_queue.is_empty():
@@ -36,11 +34,10 @@ func exit_dialogue():
 	text.visible = false
 	text_panel.visible = false
 	shade_overlay.visible = false
-	GameState.freeze_inputs = false
-	in_dialogue = false
+	GameState.in_dialogue = false
 
 func _input(event):
-	if in_dialogue and event.is_action_pressed("interact"):
+	if GameState.in_dialogue and event.is_action_pressed("interact"):
 		display_next_dialog()
 		get_viewport().set_input_as_handled()
 
