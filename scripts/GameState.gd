@@ -15,6 +15,7 @@ static var in_mini_game = false
 static var checked_mirror = 0
 
 static func are_tasks_complete() -> bool:
+	return true
 	for task in required_tasks:
 		if not task_completion[task]:
 			return false
