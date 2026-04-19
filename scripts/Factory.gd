@@ -89,7 +89,8 @@ static var room_data = {
 	},
 	3: {
 		"links": {
-			3: 1
+			3: 1,
+			1: 5
 		},
 		"interactions": [
 			{
@@ -117,6 +118,31 @@ static var room_data = {
 				"image_complete": "res://assets/sprites/potato.png" # TODO cleaned up pill bottles
 			}
 		],
+		"image": "res://assets/sprites/Room_4.png"
+	},
+	5: {
+		# bandage room
+		"links": {
+			3: 3,
+			0: 6
+		},
+		"interactions": [
+			{
+				# bandages
+				"id": 5,
+				"position": Vector2(800, 450),
+				"image": "res://assets/sprites/potato.png", # TODO wood board with dirty bandage
+				"image_complete": "" # TODO wood board with clean bandage
+			}
+		],
+		"image": "res://assets/sprites/Room_4.png"
+	},
+	6: {
+		# doppy rush room
+		"links": {
+			2: 5
+		},
+		"interactions": [],
 		"image": "res://assets/sprites/Room_4.png"
 	},
 	9: {

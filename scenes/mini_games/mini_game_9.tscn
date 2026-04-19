@@ -9,10 +9,10 @@ signal completed
 signal on_interact
 
 func _enter_tree() -> void:
-	GameState.freeze_inputs = true
+	GameState.in_minigame = true
 
 func _exit_tree():
-	#GameState.freeze_inputs = false
+	#GameState.in_minigame = false
 	pass
 
 func _input(event):

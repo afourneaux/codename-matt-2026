@@ -23,16 +23,17 @@ func _ready() -> void:
 	if GameState.task_completion[0] or not GameState.task_completion[1]:
 		# potato not picked up or already ived, quit
 		queue_free()
+		return
 		
 	find_child(\"iv\").potato_ived.connect(_on_potato_ived)
-	GameState.freeze_inputs = true
+	GameState.in_minigame = true
 	
 func _on_potato_ived():
 	find_child(\"potato\").visible = false
 	find_child(\"iv\").visible = false
 	find_child(\"iv_stand\").visible = false
 	find_child(\"ived_potato\").visible = true
-	GameState.freeze_inputs = false # must be before completed.emit()
+	GameState.in_minigame = false # must be before completed.emit()
 	completed.emit()
 "
 

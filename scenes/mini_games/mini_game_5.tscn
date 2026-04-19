@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://bud4n7mk1kcn7"]
+
+[ext_resource type="Texture2D" uid="uid://d0sl11sk5bax4" path="res://assets/sprites/potatozoom.png" id="1_ojowo"]
+[ext_resource type="Texture2D" uid="uid://bjgrvblixnaoc" path="res://assets/sprites/Needlezoom.png" id="2_smj4o"]
+
+[sub_resource type="GDScript" id="GDScript_77cm3"]
+script/source = "extends Node2D
+
+signal completed
+var dirty_bandage_on = true
+var clean_bandage_on = false
+	
+
+func _ready() -> void:
+	if GameState.task_completion[5]:
+		# wood already bandaged
+		queue_free()
+		
+	EventBus.display_dialog.emit(\"bandaged_wood1\")
+	find_child(\"clean_bandage\").bandage_on.connect(_on_clean_bandage_on)
+	find_child(\"dirty_bandage\").bandage_on.connect(_on_dirty_bandage_on)
+	GameState.in_minigame = true
+	
+func _on_clean_bandage_on(on):
+	clean_bandage_on = on
+
+func _process(delta: float) -> void:
+	if clean_bandage_on and not dirty_bandage_on:
+		GameState.in_minigame = false # must be before completed.emit()
+		print(\"bandage on\")
+		completed.emit()
+	
+func _on_dirty_bandage_on(on):
+	dirty_bandage_on = on
+"
+
+[sub_resource type="GDScript" id="GDScript_3l8m7"]
+script/source = "extends Area2D
+
+var mouse_over = false
+var dragging = false
+var over_wood = false
+signal bandage_on
+
+func _ready():
+	connect(\"mouse_entered\", _on_mouse_entered)
+	connect(\"mouse_exited\", _on_mouse_exited)
+	connect(\"area_entered\", _on_area_entered)
+	connect(\"area_exited\", _on_area_exited)
+	set_process_unhandled_input(true)
+
+func _input(event):
+	if mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		dragging = true
+		get_viewport().set_input_as_handled()
+	elif mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+		dragging = false
+		bandage_on.emit(over_wood)
+	elif event is InputEventMouseMotion and dragging:
+		position += event.relative
+		
+
+func _on_mouse_entered():
+	self.mouse_over = true
+
+func _on_mouse_exited():
+	self.mouse_over = false
+	
+func _on_area_entered(area):
+	if area.name == \"wood\":
+		over_wood = true
+
+func _on_area_exited(area):
+	if area.name == \"wood\":
+		over_wood = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7t1l"]
+size = Vector2(123, 43)
+
+[sub_resource type="GDScript" id="GDScript_7ht0x"]
+script/source = "extends Area2D
+
+var mouse_over = false
+var dragging = false
+var over_wood = false
+signal bandage_on
+
+func _ready():
+	connect(\"mouse_entered\", _on_mouse_entered)
+	connect(\"mouse_exited\", _on_mouse_exited)
+	connect(\"area_entered\", _on_area_entered)
+	connect(\"area_exited\", _on_area_exited)
+	$bandage_sprite.modulate = Color.RED
+
+	set_process_unhandled_input(true)
+
+func _input(event):
+	if mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		dragging = true
+		get_viewport().set_input_as_handled()
+	elif mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+		dragging = false
+		bandage_on.emit(over_wood)
+	elif event is InputEventMouseMotion and dragging:
+		position += event.relative
+
+func _on_mouse_entered():
+	self.mouse_over = true
+
+func _on_mouse_exited():
+	self.mouse_over = false
+	
+func _on_area_entered(area):
+	if area.name == \"wood\":
+		over_wood = true
+
+func _on_area_exited(area):
+	if area.name == \"wood\":
+		over_wood = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lvoa"]
+size = Vector2(203, 174)
+
+[node name="MiniGame5" type="Node2D" unique_id=859721148]
+script = SubResource("GDScript_77cm3")
+
+[node name="clean_bandage" type="Area2D" parent="." unique_id=504737311]
+z_index = 4
+position = Vector2(270, 248)
+script = SubResource("GDScript_3l8m7")
+
+[node name="bandage_sprite" type="Sprite2D" parent="clean_bandage" unique_id=1777923234]
+position = Vector2(0, 4.5)
+scale = Vector2(1, 0.13345195)
+texture = ExtResource("2_smj4o")
+flip_h = true
+region_rect = Rect2(0, 0, 50, 50)
+
+[node name="bandage_colision" type="CollisionShape2D" parent="clean_bandage" unique_id=1784550331]
+position = Vector2(0.5, -15.5)
+shape = SubResource("RectangleShape2D_g7t1l")
+
+[node name="dirty_bandage" type="Area2D" parent="." unique_id=1482960006]
+z_index = 4
+position = Vector2(911, 240)
+script = SubResource("GDScript_7ht0x")
+
+[node name="bandage_sprite" type="Sprite2D" parent="dirty_bandage" unique_id=1957731363]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 0.115658365)
+texture = ExtResource("2_smj4o")
+flip_h = true
+region_rect = Rect2(0, 0, 50, 50)
+
+[node name="bandage_colision" type="CollisionShape2D" parent="dirty_bandage" unique_id=926413810]
+position = Vector2(0.5, -15.5)
+shape = SubResource("RectangleShape2D_g7t1l")
+
+[node name="wood" type="Area2D" parent="." unique_id=587643905]
+z_index = 2
+position = Vector2(920, 224)
+
+[node name="wood_sprite" type="Sprite2D" parent="wood" unique_id=122524726]
+texture = ExtResource("1_ojowo")
+region_rect = Rect2(0, 0, 50, 50)
+
+[node name="wood_colision" type="CollisionShape2D" parent="wood" unique_id=1722813684]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_8lvoa")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=265590899]
+z_index = 1
+offset_left = 7.0
+offset_right = 1287.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.8666667)
