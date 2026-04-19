@@ -126,7 +126,7 @@ script = ExtResource("1_eebfp")
 position = Vector2(0, -31)
 sprite_frames = SubResource("SpriteFrames_auamg")
 animation = &"walking"
-frame_progress = 0.49941295
+frame_progress = 0.46854934
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634259441]
 position = Vector2(-2, 0)

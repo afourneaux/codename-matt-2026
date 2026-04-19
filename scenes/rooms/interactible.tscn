@@ -13,12 +13,23 @@ var image
 var image_complete
 var blocker_scale
 
+# Label wave effect
+var _total_time = 0
+var _initial_y
+const AMPLITUDE = 10 # Higher = higher wave
+const PERIOD = 2 # Higher = faster wave
+
 func _ready():
 	set_image()
 	$BlockerBox.shape.radius *= blocker_scale
 	$Label/Text.text = tr($Label/Text.text)
 	EventBus.task_completed.connect(on_task_complete)
 	$Label.play(\"default\")
+	_initial_y = $Label.position.y
+
+func _process(delta):
+	_total_time += delta
+	$Label.position.y = _initial_y + (sin(_total_time * PERIOD) * AMPLITUDE)
 
 func set_image(force_complete = false):
 	var _image = image_complete if force_complete or GameState.task_completion.get(id, false) else image

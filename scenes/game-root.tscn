@@ -92,9 +92,22 @@ func on_interact():
 				remove_child(mini_game_1)
 				EventBus.task_completed.emit(2)
 		)
+<<<<<<< HEAD
 	elif active_room.interactible == 3:
 		EventBus.task_completed.emit(3)
 
+=======
+			# TODO = add easter egg logic 
+			
+	elif active_room.interactible == 4:
+		var mini_game_8 = mini_game_8_prefab.instantiate()
+		add_child(mini_game_8)
+		mini_game_8.completed.connect(
+			func():
+				remove_child(mini_game_8)
+				change_room(-1, 9)
+		)
+>>>>>>> 295bd0c6c3e7d568587190087913f1e6e2b89cdf
 	elif active_room.interactible == 8:
 		var mini_game_8 = mini_game_8_prefab.instantiate()
 		add_child(mini_game_8)
