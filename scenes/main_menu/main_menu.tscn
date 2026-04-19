@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://druap1mnxj4lw" path="res://scripts/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_0ebjn"]
 [ext_resource type="Texture2D" uid="uid://dlcwhw2sgn5ae" path="res://assets/sprites/potato.png" id="2_ob46e"]
+[ext_resource type="Texture2D" uid="uid://br2jth27myyyl" path="res://assets/sprites/Room0.png" id="4_uqeha"]
 
 [sub_resource type="Animation" id="Animation_uqeha"]
 length = 0.001
@@ -125,7 +126,7 @@ layout_mode = 2
 [node name="Jouer" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1557175687]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0ebjn")
-text = "Jouer "
+text = "Reveilles-toi"
 
 [node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1437996583]
 layout_mode = 2
@@ -134,6 +135,16 @@ text = "Quit"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=135377822]
 layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1708921791]
+offset_right = 1152.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.7372549)
+
+[node name="room" type="TextureRect" parent="CanvasLayer" unique_id=2100727055]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_uqeha")
 
 [node name="potato" type="TextureRect" parent="CanvasLayer" unique_id=1229387220]
 offset_right = 50.0
@@ -144,3 +155,9 @@ texture = ExtResource("2_ob46e")
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_uqeha")
 autoplay = &"background"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=773995110]
+offset_top = 625.0
+offset_right = 314.0
+offset_bottom = 648.0
+text = "made with love by team Codename Matt"
