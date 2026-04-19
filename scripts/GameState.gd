@@ -16,6 +16,7 @@ static var freeze_inputs = false
 static var checked_mirror = 0
 static var has_interacted = false
 static var doppy_room_visited = 0
+static var current_room_id = 0
 
 static func are_tasks_complete() -> bool:
 	return true

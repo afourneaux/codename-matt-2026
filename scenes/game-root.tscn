@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gq6epy8wcapt"]
 
 [ext_resource type="PackedScene" uid="uid://ddu7gjrk70p2s" path="res://scenes/dialogue/dialogue_box.tscn" id="1_ky4iy"]
-[ext_resource type="PackedScene" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
+[ext_resource type="PackedScene" uid="uid://c2woextvlifjc" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
 resource_name = "GameRoot"
@@ -65,6 +65,7 @@ func fade_to_black():
 func change_room(door_source: int, room_id: int):
 	if active_room:
 		active_room.queue_free()
+	GameState.current_room_id = room_id
 	active_room = Factory.create_room(room_id, door_source)
 	active_room.room_changed.connect(change_room)
 	fade_to_black()
