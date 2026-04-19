@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dllet7bp13rq3"]
 
-[ext_resource type="Texture2D" uid="uid://cqnolt8ws7ofj" path="res://assets/sprites/To_Do_List.png" id="1_87vlw"]
-[ext_resource type="Texture2D" uid="uid://dsn22m8sptwub" path="res://assets/sprites/sink.png" id="2_h5f8j"]
+[ext_resource type="Texture2D" uid="uid://bwcnabfees1q3" path="res://assets/sprites/Tablecloseup.png" id="1_50mkq"]
+[ext_resource type="Texture2D" uid="uid://r4d5pancd2go" path="res://assets/sprites/Pillbottle.png" id="2_50mkq"]
 [ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="3_50mkq"]
-[ext_resource type="Texture2D" uid="uid://d2ry6o8dvackv" path="res://assets/sprites/Patient chart.png" id="3_tuuq7"]
+[ext_resource type="Texture2D" uid="uid://bettm6ildroa4" path="res://assets/sprites/Hand.png" id="4_50mkq"]
 
 [sub_resource type="GDScript" id="GDScript_0b7st"]
 resource_name = "MiniGame4"
@@ -51,6 +51,7 @@ func _on_capture_point_body_entered(body: Node2D) -> void:
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h5f8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5f8j"]
+size = Vector2(100, 50)
 
 [sub_resource type="GDScript" id="GDScript_tuuq7"]
 resource_name = "Mouse"
@@ -89,10 +90,10 @@ color = Color(0, 0, 0, 0.6745098)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003118152]
 position = Vector2(573, 340)
-texture = ExtResource("1_87vlw")
+texture = ExtResource("1_50mkq")
 
 [node name="Edge" type="StaticBody2D" parent="." unique_id=373970743]
-position = Vector2(400, 100)
+position = Vector2(350, 100)
 rotation = 1.5707964
 collision_layer = 16
 collision_mask = 16
@@ -101,7 +102,7 @@ collision_mask = 16
 shape = SubResource("WorldBoundaryShape2D_h5f8j")
 
 [node name="Edge2" type="StaticBody2D" parent="." unique_id=908894521]
-position = Vector2(750, 100)
+position = Vector2(800, 100)
 rotation = 4.712389
 collision_layer = 16
 collision_mask = 16
@@ -110,7 +111,7 @@ collision_mask = 16
 shape = SubResource("WorldBoundaryShape2D_h5f8j")
 
 [node name="Edge3" type="StaticBody2D" parent="." unique_id=1429220549]
-position = Vector2(400, 200)
+position = Vector2(400, 150)
 rotation = 3.1415927
 collision_layer = 16
 collision_mask = 16
@@ -119,7 +120,7 @@ collision_mask = 16
 shape = SubResource("WorldBoundaryShape2D_h5f8j")
 
 [node name="Edge4" type="StaticBody2D" parent="." unique_id=1045271309]
-position = Vector2(400, 600)
+position = Vector2(400, 520)
 collision_layer = 16
 collision_mask = 16
 
@@ -127,8 +128,8 @@ collision_mask = 16
 shape = SubResource("WorldBoundaryShape2D_h5f8j")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1587359049]
-position = Vector2(580, 630)
-texture = ExtResource("2_h5f8j")
+position = Vector2(580, 570)
+texture = ExtResource("2_50mkq")
 
 [node name="Status" type="RichTextLabel" parent="." unique_id=1193350716]
 anchors_preset = 8
@@ -152,7 +153,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CapturePoint" type="Area2D" parent="." unique_id=2068536078]
-position = Vector2(580, 600)
+position = Vector2(580, 510)
 collision_layer = 32
 collision_mask = 32
 
@@ -168,10 +169,10 @@ script = SubResource("GDScript_tuuq7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mouse" unique_id=2098058980]
 scale = Vector2(2, 2)
-texture = ExtResource("3_tuuq7")
+texture = ExtResource("4_50mkq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse" unique_id=307941039]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_h5f8j")
 
 [connection signal="body_entered" from="CapturePoint" to="." method="_on_capture_point_body_entered"]
