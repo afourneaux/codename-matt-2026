@@ -43,6 +43,7 @@ var mini_game_1_prefab = preload(\"res://scenes/mini_games/mini_game_1.tscn\")
 var mini_game_4_prefab = preload(\"res://scenes/mini_games/mini_game_4.tscn\")
 var mini_game_8_prefab = preload(\"res://scenes/mini_games/mini_game_8.tscn\")
 var mini_game_9_prefab = preload(\"res://scenes/mini_games/mini_game_9.tscn\")
+var end_game_prefab = preload(\"res://scenes/endgame.tscn\")
 var active_room: Node2D
 @onready var transition: ColorRect = $\"../UI/ColorRect\"
 
@@ -56,6 +57,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func start_endgame():
+	if active_room:
+		active_room.queue_free()
+	add_child(end_game_prefab.instantiate())
 
 func fade_to_black():
 	var tween: Tween = create_tween()
@@ -129,12 +135,8 @@ func on_interact():
 		mini_game_9.completed.connect(
 			func():
 				remove_child(mini_game_9)
-				#TODO - END GAME
+				start_endgame()
 		)
-	print(\"interacting with %s\" % active_room.interactible)
-	# TODO - launch interactible minigame based on the contents of active_room.interactible
-	
-	
 "
 
 [sub_resource type="GDScript" id="GDScript_rckx3"]
@@ -153,17 +155,15 @@ func _process(delta: float) -> void:
 	pass
 
 func update_task_list(task_list):
-	var index = 0
 	for child in $Todo/List.get_children():
 		child.queue_free()
 	for task in task_list:
 		var task_item = todo_item_obj.instantiate()
-		if GameState.task_completion[index]:
+		if GameState.task_completion[task]:
 			task_item.text = \"[s]%s[/s]\" % tr(task_list[task])
 		else:
-			task_item.text = task_list[task]
+			task_item.text = tr(task_list[task])
 		$Todo/List.add_child(task_item)
-		index += 1
 
 
 func _input(event):

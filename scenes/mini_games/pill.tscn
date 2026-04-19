@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://dlcwhw2sgn5ae" path="res://assets/sprites/potato.png" id="1_5yopb"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5yopb"]
+bounce = 0.6
+
 [sub_resource type="GDScript" id="GDScript_5yopb"]
 resource_name = "Pill"
 script/source = "extends RigidBody2D
@@ -37,6 +40,7 @@ func _physics_process(delta: float) -> void:
 [node name="Pill" type="RigidBody2D" unique_id=208291501]
 collision_layer = 112
 collision_mask = 112
+physics_material_override = SubResource("PhysicsMaterial_5yopb")
 script = SubResource("GDScript_5yopb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240529156]
