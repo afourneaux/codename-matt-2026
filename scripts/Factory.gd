@@ -98,6 +98,14 @@ static var room_data = {
 				"image_complete": ""
 			}
 		],
+		"blockers": [
+			{
+				# block doppelganger
+				"position": Vector2(440, 440),
+				"hitbox_scale": 4,
+				"image": "res://icon.svg"
+			}
+		],
 		"image": "res://assets/sprites/Room_Shape.png"
 	},
 	4: {
