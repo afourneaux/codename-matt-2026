@@ -72,11 +72,11 @@ func on_interact():
 	if active_room.interactible == -1:
 		return
 	elif active_room.interactible == 0:
-		EventBus.display_dialog.emit(\"potato_string1\")
 		var mini_game_0 = mini_game_0_prefab.instantiate()
 		add_child(mini_game_0)
 		mini_game_0.completed.connect(
 			func():
+				EventBus.display_dialog.emit(\"potato_string2\")
 				remove_child(mini_game_0)
 				EventBus.task_completed.emit(0)
 		)

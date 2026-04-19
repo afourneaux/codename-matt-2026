@@ -16,7 +16,14 @@ func _exit_tree() -> void:
 	GameState.in_mini_game = false
 
 func _ready() -> void:
+	if not GameState.task_completion[1]:
+		# iv interacted but no potato picked up
+		EventBus.display_dialog.emit(\"iv_string1\")
+
 	if GameState.task_completion[0] or not GameState.task_completion[1]:
+		GameState.ived_potato_nagged += 1
+		if GameState.ived_potato_nagged >= 2:
+			EventBus.display_dialog.emit(\"potato_string3\")
 		queue_free()
 	find_child(\"iv\").potato_ived.connect(_on_potato_ived)
 	
