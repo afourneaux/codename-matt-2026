@@ -8,17 +8,17 @@ task_string4,Organize the pharmacy,Organiser la pharmacie
 task_string5,Change patient's bandages,Changer les bandages du patient
 play_button,Wake up,Reveillez-vous
 quit_button,Quit,Quitter
-potato_string1,[color=brown]Who are you? You're not the usual nurse.[/color],[color=brown]Qui êtes vous? Vous n\'êtes pas l'infirmière habituelle.[/color]
-potato_string2,Here you go sir.,Voilà pour vous monsieur.
+potato_string1,[color=brown]Who are you? You're not the usual nurse.[/color],[color=brown]Qui etes vous? Vous n\'etes pas l'infirmier habituel.[/color]
+potato_string2,Here you go sir.,Voila pour vous monsieur.
 potato_string3,[color=brown]What are you looking at punk?[/color],[color=brown]Tu veux quoi? Ma photo?[/color]
-potato_string4,[color=brown]Are you lost?[/color],[color=brown]Vous êtes perdu?[/color]
-potato_string5,[color=brown]Security!![/color],[color=brown]Sécurité!![/color]
-iv_string1,Ah yes the IV. So called because it\'s the fourth medical procedure to be invented, Ahhh l\'IV\. ainsi appelée car c'est la quatrième procédure médicale à avoir été inventée
+potato_string4,[color=brown]Are you lost?[/color],[color=brown]Vous etes perdu?[/color]
+potato_string5,[color=brown]Security!![/color],[color=brown]Securite!![/color]
+iv_string1,Ah yes the IV. So called because it\'s the fourth medical procedure to be invented, Ahhh l\'IV\. ainsi appelee car c'est la quatrieme procedure medicale a avoir ete inventee
 bandaged_wood1,Hello sir. How are we doing today? We'll do your bandage change now, Bonjour monsieur. Comment allez-vous aujourd'ui? On va changer votre pansement
 bandaged_wood2,Like new, Comme neuf
-minigame1_string1,Another day at work for ole' Matt...,Une autre journée au travail pour Matt...
-locked_locker,It's locked. There must be a key somewhere,C'est vérouillé. Il doit y avoir une clé quelque part
-interact,Press [E] to interact,[E] pour intéragir
+minigame1_string1,Another day at work for ole' Matt...,Une autre journee au travail pour Matt...
+locked_locker,It's locked. There must be a key somewhere,C'est verouille. Il doit y avoir une cle quelque part
+interact,Press [E] to interact,[E] pour interagir
 chart_title,Patient Chart,Fiche de Patient
 chart_1,Patient:,Patient:
 chart_2,Matt,Matt
