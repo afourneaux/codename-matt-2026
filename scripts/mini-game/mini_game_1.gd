@@ -1,6 +1,6 @@
 extends Node2D
 signal completed
-signal on_interact
+
 
 func _enter_tree() -> void:
 	GameState.in_mini_game = true
@@ -11,7 +11,7 @@ func _exit_tree():
 func _input(event):
 	if event.is_action_pressed("interact"):
 		completed.emit()
-
+				
 func _ready():
 	if GameState.task_completion[2]:
-		pass
+		queue_free()
