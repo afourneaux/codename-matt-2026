@@ -1,6 +1,6 @@
 extends Node2D
-
 signal completed
+signal on_interact
 
 func _enter_tree() -> void:
 	GameState.in_mini_game = true
@@ -8,6 +8,10 @@ func _enter_tree() -> void:
 func _exit_tree():
 	GameState.in_mini_game = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _input(event):
+	if event.is_action_pressed("interact"):
+		completed.emit()
+
+func _ready():
+	if GameState.task_completion[2]:
+		pass
