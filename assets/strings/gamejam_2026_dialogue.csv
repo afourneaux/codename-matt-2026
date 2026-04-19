@@ -14,6 +14,8 @@ potato_string3,[color=brown]What are you looking at punk?[/color],[color=brown]T
 potato_string4,[color=brown]Are you lost?[/color],[color=brown]Vous êtes perdu?[/color]
 potato_string5,[color=brown]Security!![/color],[color=brown]Sécurité!![/color]
 iv_string1,Ah yes the IV. So called because it\'s the fourth medical procedure to be invented, Ahhh l\'IV\. ainsi appelée car c'est la quatrième procédure médicale à avoir été inventée
+bandaged_wood1,Hello sir. How are we doing today? We'll do your bandage change now, Bonjour monsieur. Comment allez-vous aujourd'ui? On va changer votre pansement
+bandaged_wood2,Like new, Comme neuf
 minigame1_string1,Another day at work for ole' Matt...,Une autre journée au travail pour Matt...
 locked_locker,It's locked. There must be a key somewhere,C'est vérouillé. Il doit y avoir une clé quelque part
 interact,Press [E] to interact,[E] pour intéragir

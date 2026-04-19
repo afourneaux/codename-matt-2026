@@ -9,10 +9,10 @@ script/source = "extends Node2D
 signal completed
 
 func _enter_tree() -> void:
-	GameState.freeze_inputs = true
+	GameState.in_minigame = true
 
 func _exit_tree():
-	GameState.freeze_inputs = false
+	GameState.in_minigame = false
 
 func _input(event):
 	if event.is_action_pressed(\"interact\"):

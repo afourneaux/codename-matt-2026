@@ -17,10 +17,10 @@ const PILL_COUNT = 15
 var pills_collected = 0
 
 func _enter_tree() -> void:
-	GameState.freeze_inputs = true
+	GameState.in_minigame = true
 
 func _exit_tree() -> void:
-	GameState.freeze_inputs = false
+	GameState.in_minigame = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
