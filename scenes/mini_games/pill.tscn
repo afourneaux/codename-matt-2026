@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fmahn8k4jufp"]
 
-[ext_resource type="Texture2D" uid="uid://dlcwhw2sgn5ae" path="res://assets/sprites/potato.png" id="1_5yopb"]
+[ext_resource type="Texture2D" uid="uid://3fju1cc5kxyg" path="res://assets/sprites/Redpill.png" id="1_5yopb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5yopb"]
 bounce = 0.6

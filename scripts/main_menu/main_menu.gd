@@ -12,6 +12,7 @@ func _ready():
 	play.pressed.connect(_on_play_pressed)
 	jouer.pressed.connect(_on_jouer_pressed)
 	quit.pressed.connect(_on_quit_pressed)
+	Audio.play_bg_music("white_noise")
 
 func _on_play_pressed():
 	TranslationServer.set_locale("en")

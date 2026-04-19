@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dfgd6c0qvl3js" path="res://assets/sprites/Room_ending.png" id="1_m5up5"]
 [ext_resource type="Texture2D" uid="uid://8adb01djlxlc" path="res://assets/sprites/Sinkandmirrorclean.png" id="2_tbbo3"]
-[ext_resource type="Texture2D" uid="uid://ikymlrns4euu" path="res://assets/sprites/Man_Walking_Sprite_Sheet_colo_spaced.png" id="3_odl71"]
+[ext_resource type="Texture2D" uid="uid://cb1hmqwxmvjg4" path="res://assets/sprites/Man_Walking_Ending_Sprite_Sheet.png" id="3_cytj6"]
 [ext_resource type="Texture2D" uid="uid://ckcmkm422cq8d" path="res://assets/sprites/Ending_glass.png" id="4_tbbo3"]
 [ext_resource type="Texture2D" uid="uid://bqllgodfj26dc" path="res://assets/sprites/Ending_frame.png" id="5_odl71"]
 [ext_resource type="Texture2D" uid="uid://brdfv26dhahe" path="res://assets/sprites/Scientist2x.png" id="6_cytj6"]
@@ -14,6 +14,7 @@ script/source = "extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimationPlayer.play(\"endgame\")
+	Audio.play_bg_music(\"endgame_writing\")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -302,7 +303,7 @@ offset_left = 525.0
 offset_top = 335.0
 offset_right = 569.0
 offset_bottom = 409.0
-texture = ExtResource("3_odl71")
+texture = ExtResource("3_cytj6")
 region_rect = Rect2(0, 0, 42.914925, 74)
 
 [node name="Glass" type="Sprite2D" parent="." unique_id=2115464620]

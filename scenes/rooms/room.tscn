@@ -46,6 +46,7 @@ func create_blocker(blocker_data):
 
 func _on_door_entered(door_id):
 	print(\"Entered door %s to room %s\" % [door_id, room_links[door_id]])
+	Audio.play_sfx(\"door_open\")
 	room_changed.emit(door_id, room_links[door_id])
 
 # Called when the node enters the scene tree for the first time.

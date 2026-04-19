@@ -119,6 +119,23 @@ static var room_data = {
 				"image_complete": "res://assets/sprites/Pillcabinetopen.png"
 			}
 		],
+		"blockers": [
+		{
+			# table
+			"position": Vector2(465, 365),
+			"hitbox_scale": 4
+		},
+		{
+			# curtain + bed
+			"position": Vector2(650, 355),
+			"hitbox_scale": 5
+		},
+		{
+			#iv
+			"position": Vector2(745, 415),
+			"hitbox_scale": 2
+		}
+		],
 		"image": "res://assets/sprites/Room_4.png"
 	},
 	5: {

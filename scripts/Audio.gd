@@ -22,8 +22,9 @@ func _process(delta):
 		bg_node.play()
 
 func play_bg_music(value):
-	if bg_music != value:
-		bg_music = value
+	var new_music = load("res://assets/audio/%s.wav" % value)
+	if bg_music != new_music:
+		bg_music = new_music
 		if bg_music == null:
 			bg_node.stop()
 		else:

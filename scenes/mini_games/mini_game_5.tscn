@@ -26,6 +26,7 @@ func _on_clean_bandage_on(on):
 
 func _process(delta: float) -> void:
 	if clean_bandage_on and not dirty_bandage_on:
+		Audio.play_sfx(\"bandages\")
 		GameState.in_minigame = false # must be before completed.emit()
 		print(\"bandage on\")
 		completed.emit()
