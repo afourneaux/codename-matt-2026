@@ -150,8 +150,8 @@ static var room_data = {
 				# bandages
 				"id": 5,
 				"position": Vector2(800, 450),
-				"image": "res://assets/sprites/peglegdirty.png",
-				"image_complete": "res://assets/sprites/peglegclean.png"
+				"image": "res://assets/sprites/Peglegdirty.png",
+				"image_complete": "res://assets/sprites/Peglegclean.png"
 			}
 		],
 		"image": "res://assets/sprites/Room_5.png"
