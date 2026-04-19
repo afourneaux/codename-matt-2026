@@ -25,8 +25,8 @@ static var room_data = {
 				"id": 2,
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
-				"image": "res://assets/sprites/Sinkandmirror.png",
-				"image_complete": "res://assets/sprites/Sinkandmirror.png"
+				"image": "res://assets/sprites/sink.png",
+				"image_complete": "res://assets/sprites/sink.png"
 			}
 		],
 		"blockers": [
@@ -51,12 +51,13 @@ static var room_data = {
 				"hitbox_scale": 1
 			}
 		],
-		"image": "res://assets/sprites/Room0.png"
+		"image": "res://assets/sprites/room_1.png"
 	},
 	1: {
 		"links": {
 			3: 0,
-			0: 2
+			0: 2,
+			1: 3
 		},
 		"interactions": [
 			{
@@ -84,6 +85,20 @@ static var room_data = {
 		],
 		"image": "res://assets/sprites/Room_Shape.png"
 	},
+	3: {
+		"links": {
+			3: 1
+		},
+		"interactions": [
+			{
+				"id": 3,
+				"position": Vector2(450, 550),
+				"image": "res://icon.svg",
+				"image_complete": "res://icon.svg"
+			}
+		],
+		"image": "res://assets/sprites/Room_Shape.png"
+	},
 	9: {
 		"links": {
 		},
@@ -93,8 +108,8 @@ static var room_data = {
 				"id": 9,
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
-				"image": "res://assets/sprites/Sinkandmirror.png",
-				"image_complete": "res://assets/sprites/Sinkandmirror.png"
+				"image": "res://assets/sprites/sink.png",
+				"image_complete": "res://assets/sprites/sink.png"
 			}
 		],
 		"blockers": [
@@ -119,7 +134,7 @@ static var room_data = {
 				"hitbox_scale": 1
 			}
 		],
-		"image": "res://assets/sprites/room_ending.png"
+		"image": "res://assets/sprites/room_1.png"
 	}
 }
 
