@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c6lptin1aib53"]
+
+[ext_resource type="Texture2D" uid="uid://duhfknladhln7" path="res://assets/sprites/Patientchartcloseup.png" id="1_isqw5"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="3_3cm5m"]
+
+[sub_resource type="GDScript" id="GDScript_isqw5"]
+resource_name = "mini_game_8"
+script/source = "extends Node2D
+signal completed
+
+func _enter_tree() -> void:
+	GameState.in_mini_game = true
+
+func _exit_tree():
+	GameState.in_mini_game = false
+
+func _input(event):
+	if event.is_action_pressed(\"interact\"):
+		completed.emit()
+
+func _ready():
+	for row in $Chart/Contents.get_children():
+		row.text = tr(row.text)
+"
+
+[node name="MiniGame8" type="Node2D" unique_id=677959257]
+script = SubResource("GDScript_isqw5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=685977791]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 1175.0
+offset_bottom = 670.0
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+
+[node name="Chart" type="Sprite2D" parent="." unique_id=771436500]
+position = Vector2(573, 340)
+texture = ExtResource("1_isqw5")
+
+[node name="Contents" type="VBoxContainer" parent="Chart" unique_id=2043116099]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -369.0
+offset_right = -86.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chart_title" type="RichTextLabel" parent="Chart/Contents" unique_id=1090450499]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+theme_override_font_sizes/normal_font_size = 22
+text = "chart_title"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="chart_1" type="RichTextLabel" parent="Chart/Contents" unique_id=2104008776]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_1"
+fit_content = true
+
+[node name="chart_2" type="RichTextLabel" parent="Chart/Contents" unique_id=173519011]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_2"
+fit_content = true
+
+[node name="chart_3" type="RichTextLabel" parent="Chart/Contents" unique_id=1680607854]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_3"
+fit_content = true
+
+[node name="chart_4" type="RichTextLabel" parent="Chart/Contents" unique_id=88377808]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_4"
+fit_content = true
+
+[node name="chart_5" type="RichTextLabel" parent="Chart/Contents" unique_id=982002661]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_5"
+fit_content = true
+
+[node name="chart_6" type="RichTextLabel" parent="Chart/Contents" unique_id=540373456]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_6"
+fit_content = true
+
+[node name="chart_7" type="RichTextLabel" parent="Chart/Contents" unique_id=585219428]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_7"
+fit_content = true
+
+[node name="chart_8" type="RichTextLabel" parent="Chart/Contents" unique_id=1459488724]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3cm5m")
+text = "chart_8"
+fit_content = true
+horizontal_alignment = 2

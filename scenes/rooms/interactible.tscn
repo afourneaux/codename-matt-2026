@@ -17,7 +17,7 @@ func _ready():
 	EventBus.task_completed.connect(on_task_complete)
 
 func set_image(force_complete = false):
-	var _image = image_complete if force_complete or GameState.task_completion[id] else image
+	var _image = image_complete if force_complete or GameState.task_completion.get(id, false) else image
 	if _image == \"\":
 		queue_free()
 		return

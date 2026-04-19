@@ -38,6 +38,7 @@ script/source = "extends Node2D
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var mini_game_0_prefab = preload(\"res://scenes/mini_games/mini_game_0.tscn\") 
 var mini_game_1_prefab = preload(\"res://scenes/mini_games/mini_game_1.tscn\")
+var mini_game_8_prefab = preload(\"res://scenes/mini_games/mini_game_8.tscn\")
 var active_room: Node2D
 @onready var transition: ColorRect = $\"../UI/ColorRect\"
 
@@ -94,6 +95,14 @@ func on_interact():
 		if GameState.checked_mirror == 2:
 			print(\"we have looked at ourselves 3 times now!\")
 			# TODO = add easter egg logic 
+	elif active_room.interactible == 8:
+		var mini_game_8 = mini_game_8_prefab.instantiate()
+		add_child(mini_game_8)
+		mini_game_8.completed.connect(
+			func():
+				remove_child(mini_game_8)
+				change_room(-1, 9)
+		)
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible
 	
