@@ -52,6 +52,9 @@ func get_animation_name():
 
 func _input(event):
 	if GameState.freeze_inputs():
+		if audio:
+			Audio.stop_sfx(audio)
+			audio = false
 		return
 	if event.is_action_pressed("interact"):
 		on_interact.emit()
