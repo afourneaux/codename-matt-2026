@@ -96,9 +96,10 @@ static var room_data = {
 			{
 				# key
 				"id": 3,
-				"position": Vector2(750, 450),
-				"image": "res://icon.svg",
-				"image_complete": "res://assets/sprites/potato.png"
+				"position": Vector2(780, 450),
+				"hitbox_scale": 4,
+				"image": "res://assets/sprites/Tableandkey.png",
+				"image_complete": "res://assets/sprites/Tableempty.png"
 			}
 		],
 		"blockers": [
