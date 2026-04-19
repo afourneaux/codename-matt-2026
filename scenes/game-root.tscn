@@ -155,17 +155,15 @@ func _process(delta: float) -> void:
 	pass
 
 func update_task_list(task_list):
-	var index = 0
 	for child in $Todo/List.get_children():
 		child.queue_free()
 	for task in task_list:
 		var task_item = todo_item_obj.instantiate()
-		if GameState.task_completion[index]:
+		if GameState.task_completion[task]:
 			task_item.text = \"[s]%s[/s]\" % tr(task_list[task])
 		else:
-			task_item.text = task_list[task]
+			task_item.text = tr(task_list[task])
 		$Todo/List.add_child(task_item)
-		index += 1
 
 
 func _input(event):
