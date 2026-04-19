@@ -71,7 +71,8 @@ static var room_data = {
 	},
 	2: {
 		"links": {
-			2: 1
+			2: 1,
+			1: 4
 		},
 		"interactions": [
 			{
@@ -80,6 +81,21 @@ static var room_data = {
 				"position": Vector2(400, 450),
 				"image": "res://assets/sprites/potato.png",
 				"image_complete": ""
+			}
+		],
+		"image": "res://assets/sprites/Room_Shape.png"
+	},
+	4: {
+		"links": {
+			0: 2
+		},
+		"interactions": [
+			{
+				# pills
+				"id": 4,
+				"position": Vector2(800, 450),
+				"image": "res://assets/sprites/potato.png", # TODO Pill bottles on table in room
+				"image_complete": "res://assets/sprites/potato.png" # TODO cleaned up pill bottles
 			}
 		],
 		"image": "res://assets/sprites/Room_Shape.png"
