@@ -26,6 +26,7 @@ func get_input():
 			sprite.play("walking")
 	else:
 		sprite.stop()
+	z_index = int(position.y / 20) + 10
 	
 func _input(event):
 	if GameState.freeze_inputs:

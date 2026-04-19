@@ -199,7 +199,16 @@ static func create_room(room_id: int, last_door_position: int):
 	room.character = character
 	if room_id == 3:
 		# spawn doppy
-		var doppy = doppy_obj.instantiate()
+		var doppy_count = 1
+		if GameState.doppy_room_visited:
+			doppy_count = 10
+		spawn_doppies(doppy_count, room, last_door_position, new_door_position)
+		GameState.doppy_room_visited = true
+
+	return room
+
+static func spawn_doppies(count, room, last_door_position, new_door_position):
+		var last_spawn_position
 		var opposite_door = {
 			0: 1,
 			1: 0,
@@ -207,8 +216,12 @@ static func create_room(room_id: int, last_door_position: int):
 			3: 2
 		}
 		if last_door_position == -1:
-			doppy.position = ROOM_CENTRE
+			last_spawn_position = ROOM_CENTRE
 		else:
-			doppy.position = door_positions[opposite_door[new_door_position]]
-		room.add_child(doppy)
-	return room
+			last_spawn_position = door_positions[opposite_door[new_door_position]]
+		var doppy
+		for i in range(count):
+			doppy = doppy_obj.instantiate()
+			doppy.position = last_spawn_position
+			room.add_child(doppy)
+			last_spawn_position = Vector2(randi_range(408, 724), randi_range(350, 447))
