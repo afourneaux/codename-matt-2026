@@ -33,6 +33,7 @@ func _on_potato_ived():
 	find_child(\"iv\").visible = false
 	find_child(\"iv_stand\").visible = false
 	find_child(\"ived_potato\").visible = true
+	Audio.play_sfx(\"iv_plugin\")
 	GameState.in_minigame = false # must be before completed.emit()
 	completed.emit()
 "
@@ -59,6 +60,7 @@ func _ready():
 func _input(event):
 	if mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		dragging = true
+		Audio.play_sfx(\"clack\")
 	elif mouse_over and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 		dragging = false
 		if over_potato:

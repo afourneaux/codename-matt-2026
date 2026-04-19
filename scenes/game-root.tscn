@@ -15,10 +15,11 @@ var task_list = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# TODO - call based on a signal from UI?
 	update_task_list()
 	$UI.todo_opened.connect(update_task_list)
 	$World.start_game()
+	
+	Audio.play_sfx(\"intro_music\")
 	
 	EventBus.task_completed.connect(_on_task_completed)
 
@@ -83,6 +84,7 @@ func on_interact():
 	if active_room.interactible == -1:
 		return
 	elif active_room.interactible == 0:
+		Audio.play_sfx(\"clack\")
 		var mini_game_0 = mini_game_0_prefab.instantiate()
 		add_child(mini_game_0)
 		mini_game_0.completed.connect(
@@ -92,9 +94,11 @@ func on_interact():
 				EventBus.task_completed.emit(0)
 		)
 	elif active_room.interactible == 1:
+		Audio.play_sfx(\"item_pickup\")
 		EventBus.task_completed.emit(1)
 
 	elif active_room.interactible == 2:
+		Audio.play_sfx(\"clack\")
 		EventBus.queue_dialog.emit(\"minigame1_string1\")
 		var mini_game_1 = mini_game_1_prefab.instantiate()
 		add_child(mini_game_1)
@@ -105,9 +109,11 @@ func on_interact():
 		)
 
 	elif active_room.interactible == 3:
+		Audio.play_sfx(\"item_pickup\")
 		EventBus.task_completed.emit(3)
 			
 	elif active_room.interactible == 4:
+		Audio.play_sfx(\"clack\")
 		# try to open pill lock
 		if not GameState.task_completion[3]:
 			# no key
@@ -123,6 +129,7 @@ func on_interact():
 					GameState.task_completion[4] = true
 			)
 	elif active_room.interactible == 5:
+		Audio.play_sfx(\"clack\")
 		# bandage change
 		if GameState.task_completion[5]:
 			# already changed
@@ -139,6 +146,7 @@ func on_interact():
 					EventBus.display_dialog.emit(\"bandaged_wood2\")
 			)
 	elif active_room.interactible == 8:
+		Audio.play_sfx(\"clack\")
 		var mini_game_8 = mini_game_8_prefab.instantiate()
 		add_child(mini_game_8)
 		mini_game_8.completed.connect(

@@ -41,6 +41,7 @@ func update_label():
 	$Status.text = \"%s / %s\" % [pills_collected, PILL_COUNT]
 
 func _on_capture_point_body_entered(body: Node2D) -> void:
+	Audio.play_sfx(\"iv_plugin\")
 	body.queue_free()
 	pills_collected += 1
 	update_label()
