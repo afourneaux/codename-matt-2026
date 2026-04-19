@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8rstj1o1t7v7" path="res://scripts/mini-game/mini_game_1.gd" id="1_xgr0k"]
 [ext_resource type="Texture2D" uid="uid://0b51qnc6b8h4" path="res://assets/sprites/Main_character_closeup.png" id="2_k11qg"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="3_asmsq"]
 
 [node name="MiniGame2" type="Node2D" unique_id=677959257]
 script = ExtResource("1_xgr0k")
@@ -18,3 +19,14 @@ color = Color(0, 0, 0, 0.6745098)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=771436500]
 position = Vector2(573, 340)
 texture = ExtResource("2_k11qg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1268188118]
+offset_left = 511.0
+offset_top = 402.0
+offset_right = 554.0
+offset_bottom = 420.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_asmsq")
+theme_override_font_sizes/normal_font_size = 11
+text = "Matt"
+scroll_active = false

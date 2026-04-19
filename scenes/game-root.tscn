@@ -38,6 +38,7 @@ script/source = "extends Node2D
 var character_prefab = preload(\"res://scenes/player/player_character.tscn\")
 var mini_game_0_prefab = preload(\"res://scenes/mini_games/mini_game_0.tscn\") 
 var mini_game_1_prefab = preload(\"res://scenes/mini_games/mini_game_1.tscn\")
+var mini_game_8_prefab = preload(\"res://scenes/mini_games/mini_game_8.tscn\")
 var active_room: Node2D
 @onready var transition: ColorRect = $\"../UI/ColorRect\"
 
@@ -82,18 +83,30 @@ func on_interact():
 		EventBus.task_completed.emit(1)
 
 	elif active_room.interactible == 2:
-		while GameState.checked_mirror < 2:
-			var mini_game_1 = mini_game_1_prefab.instantiate()
-			add_child(mini_game_1)
-			mini_game_1.completed.connect(
-				func():
-					remove_child(mini_game_1)
-					EventBus.task_completed.emit(2)
+		EventBus.queue_dialog.emit(\"minigame1_string1\")
+		var mini_game_1 = mini_game_1_prefab.instantiate()
+		add_child(mini_game_1)
+		mini_game_1.completed.connect(
+			func():
+				remove_child(mini_game_1)
+				EventBus.task_completed.emit(2)
 		)
-			GameState.checked_mirror += 1
-		if GameState.checked_mirror == 2:
-			print(\"we have looked at ourselves 3 times now!\")
 			# TODO = add easter egg logic 
+	elif active_room.interactible == 8:
+		var mini_game_8 = mini_game_8_prefab.instantiate()
+		add_child(mini_game_8)
+		mini_game_8.completed.connect(
+			func():
+				remove_child(mini_game_8)
+				change_room(-1, 9)
+		)
+		var mini_game_1 = mini_game_1_prefab.instantiate()
+		add_child(mini_game_1)
+		mini_game_1.completed.connect(
+			func():
+				remove_child(mini_game_1)
+				EventBus.task_completed.emit(2)
+		)
 	print(\"interacting with %s\" % active_room.interactible)
 	# TODO - launch interactible minigame based on the contents of active_room.interactible
 	
@@ -157,17 +170,8 @@ script = SubResource("GDScript_rckx3")
 
 [node name="Todo" parent="UI" unique_id=1561376941 instance=ExtResource("2_jcw77")]
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 400.0
-offset_bottom = 500.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_top = -250.0
+offset_bottom = 250.0
 
 [node name="ColorRect" type="ColorRect" parent="UI" unique_id=1956519339]
 layout_mode = 0

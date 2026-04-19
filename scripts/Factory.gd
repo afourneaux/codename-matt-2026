@@ -84,20 +84,13 @@ static var room_data = {
 		],
 		"image": "res://assets/sprites/Room_Shape.png"
 	},
-	3: {
-		"links": {
-			0: 1,
-			1: 4
-		},
-		"image": "res://assets/sprites/Room_Shape.png"
-	},
-	4: {
+	9: {
 		"links": {
 		},
 		"interactions": [
 			{
-				# sink
-				"id": 4,
+				# finale
+				"id": 9,
 				"position": Vector2(600, 350),
 				"hitbox_scale": 4,
 				"image": "res://assets/sprites/sink.png",
@@ -151,8 +144,8 @@ static func create_room(room_id: int, last_door_position: int):
 			{
 				# IV minigame
 				"id": 8,
-				"position": Vector2(750, 460),
-				"image": "res://assets/sprites/iv.png",
+				"position": Vector2(750, 470),
+				"image": "res://assets/sprites/Patient chart.png",
 				"image_complete": ""
 			})
 	for blocker in data.get("blockers", []):
