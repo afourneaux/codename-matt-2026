@@ -1,6 +1,70 @@
 [gd_scene format=3 uid="uid://l86ofx34nq02"]
 
 [ext_resource type="Script" uid="uid://druap1mnxj4lw" path="res://scripts/main_menu/main_menu.gd" id="1_fsom3"]
+[ext_resource type="FontFile" uid="uid://ckb7sg76llgo1" path="res://assets/fonts/pixely.ttf" id="2_0ebjn"]
+[ext_resource type="Texture2D" uid="uid://dlcwhw2sgn5ae" path="res://assets/sprites/potato.png" id="2_ob46e"]
+
+[sub_resource type="Animation" id="Animation_uqeha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/potato:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/potato:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ob46e"]
+resource_name = "background"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/potato:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1150, 650)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/potato:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50, 50), Vector2(50, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uqeha"]
+_data = {
+&"RESET": SubResource("Animation_uqeha"),
+&"background": SubResource("Animation_ob46e")
+}
 
 [node name="MainMenu" type="Control" unique_id=557608181]
 layout_mode = 3
@@ -12,6 +76,8 @@ grow_vertical = 2
 script = ExtResource("1_fsom3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=638130240]
+show_behind_parent = true
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +98,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=422708373]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ebjn")
 text = "Subject IV"
 horizontal_alignment = 1
 
@@ -44,10 +111,36 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_constants/separation = 18
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=244779669]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=192142298]
 layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=244779669]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ebjn")
 text = "Wake Up"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1358519210]
+layout_mode = 2
+
+[node name="Jouer" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1557175687]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ebjn")
+text = "Jouer "
 
 [node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1437996583]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ebjn")
 text = "Quit"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=135377822]
+layer = -1
+
+[node name="potato" type="TextureRect" parent="CanvasLayer" unique_id=1229387220]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("2_ob46e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=294893503]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_uqeha")
+autoplay = &"background"
