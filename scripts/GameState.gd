@@ -14,6 +14,7 @@ static var required_tasks = [
 static var in_mini_game = false
 static var checked_mirror = 0
 static var has_interacted = false
+static var ived_potato_nagged = 0
 
 static func are_tasks_complete() -> bool:
 	return true

@@ -7,6 +7,8 @@ play_button,Play,Jouer
 quit_button,Quit,Quitter
 potato_string1,[color=brown]Who are you? You're not the usual nurse.[/color],[color=brown]Qui êtes vous? Vous n\'êtes pas l'infirmière habituelle.[/color]
 potato_string2,Here you go sir.,Voilà pour vous monsieur.
+potato_string3,What are you looking at punk?,Tu veux quoi? Ma photo?
+iv_string1,Ah yes the IV. So called because it\'s the fourth medical procedure to be invented, Ahhh l\'IV\. ainsi appelée car c'est la quatrième procédure médicale à avoir été inventée
 minigame1_string1,Another day at work for ole' Matt...,Une autre journée au travail pour Matt...
 interact,Press E to interact,Veulliez appuyer sur le E
 chart_title,Patient Chart,Fiche de Patient
