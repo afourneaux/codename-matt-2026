@@ -69,7 +69,7 @@ static var room_data = {
 				"image_complete": "res://assets/sprites/potatowithiv.png"
 			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/room_1.png"
 	},
 	2: {
 		"links": {
@@ -85,7 +85,7 @@ static var room_data = {
 				"image_complete": ""
 			}
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/Room_2.png"
 	},
 	3: {
 		"links": {
@@ -102,7 +102,7 @@ static var room_data = {
 		],
 		"blockers": [
 		],
-		"image": "res://assets/sprites/Room_Shape.png"
+		"image": "res://assets/sprites/Room_3.png"
 	},
 	4: {
 		"links": {
