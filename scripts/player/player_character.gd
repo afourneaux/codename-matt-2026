@@ -28,13 +28,13 @@ func get_input():
 		sprite.stop()
 	
 func _input(event):
-	if GameState.in_mini_game:
+	if GameState.freeze_inputs:
 		return
 	if event.is_action_pressed("interact"):
 		on_interact.emit()
 
 func _physics_process(delta):
-	if GameState.in_mini_game:
+	if GameState.freeze_inputs:
 		return
 	get_input()
 	interaction()

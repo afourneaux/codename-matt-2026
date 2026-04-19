@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gq6epy8wcapt"]
 
 [ext_resource type="PackedScene" uid="uid://ddu7gjrk70p2s" path="res://scenes/dialogue/dialogue_box.tscn" id="1_ky4iy"]
-[ext_resource type="PackedScene" uid="uid://c2woextvlifjc" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
+[ext_resource type="PackedScene" path="res://scenes/todo/todo.tscn" id="2_jcw77"]
 
 [sub_resource type="GDScript" id="GDScript_jcw77"]
 resource_name = "GameRoot"
@@ -159,7 +159,7 @@ func update_task_list(task_list):
 
 
 func _input(event):
-	if GameState.in_mini_game:
+	if GameState.freeze_inputs:
 		return
 	if event.is_action_pressed(\"todo\"):
 		$Todo.change_state()

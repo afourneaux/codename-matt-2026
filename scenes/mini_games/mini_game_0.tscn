@@ -9,29 +9,30 @@
 script/source = "extends Node2D
 
 signal completed
-func _enter_tree() -> void:
-	GameState.in_mini_game = true
-
-func _exit_tree() -> void:
-	GameState.in_mini_game = false
+	
 
 func _ready() -> void:
 	if not GameState.task_completion[1]:
 		# iv interacted but no potato picked up
 		EventBus.display_dialog.emit(\"iv_string1\")
-
+	
+	if GameState.task_completion[0]:
+		# potato ived
+		EventBus.display_dialog.emit(\"potato_string3\")
+	
 	if GameState.task_completion[0] or not GameState.task_completion[1]:
-		GameState.ived_potato_nagged += 1
-		if GameState.ived_potato_nagged >= 2:
-			EventBus.display_dialog.emit(\"potato_string3\")
+		# potato not picked up or already ived, quit
 		queue_free()
+		
 	find_child(\"iv\").potato_ived.connect(_on_potato_ived)
+	GameState.freeze_inputs = true
 	
 func _on_potato_ived():
 	find_child(\"potato\").visible = false
 	find_child(\"iv\").visible = false
 	find_child(\"iv_stand\").visible = false
 	find_child(\"ived_potato\").visible = true
+	GameState.freeze_inputs = false # must be before completed.emit()
 	completed.emit()
 "
 
