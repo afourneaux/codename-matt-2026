@@ -8,6 +8,7 @@
 script = ExtResource("1_eprfq")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1762790057]
+z_index = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 147.0
@@ -23,23 +24,31 @@ patch_margin_top = 3
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/NinePatchRect" unique_id=1946951057]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect" unique_id=493943785]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -133.0
-offset_top = -41.0
-offset_bottom = 41.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -11.0
+grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="dialog_display" type="RichTextLabel" parent="MarginContainer/NinePatchRect/VBoxContainer" unique_id=1946951057]
+layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_erktn")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/NinePatchRect/VBoxContainer" unique_id=1791244053]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_erktn")
+text = "      [E]"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1973928184]
 offset_right = 50.0
@@ -49,3 +58,9 @@ patch_margin_left = 3
 patch_margin_top = 2
 patch_margin_right = 3
 patch_margin_bottom = 5
+
+[node name="shade_overlay" type="ColorRect" parent="." unique_id=322502446]
+visible = false
+offset_right = 1243.0
+offset_bottom = 691.0
+color = Color(0, 0, 0, 0.5686275)

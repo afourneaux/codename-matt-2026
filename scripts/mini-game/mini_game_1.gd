@@ -3,12 +3,12 @@ signal completed
 
 
 func _enter_tree() -> void:
-	GameState.in_mini_game = true
-
-func _exit_tree():
-	GameState.in_mini_game = false
+	GameState.freeze_inputs = true
+	
 
 func _input(event):
 	if event.is_action_pressed("interact"):
 		get_viewport().set_input_as_handled()
+		GameState.freeze_inputs = false # must be before completed.emit()
 		completed.emit()
+		

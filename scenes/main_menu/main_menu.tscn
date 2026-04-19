@@ -31,6 +31,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/potato2:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50.00061, 50)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/potato2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1099.995, 1.43)]
+}
 
 [sub_resource type="Animation" id="Animation_ob46e"]
 resource_name = "background"
@@ -43,10 +67,10 @@ tracks/0/path = NodePath("CanvasLayer/potato:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 20),
+"times": PackedFloat32Array(0, 9.953929),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1150, 650)]
+"values": [Vector2(0, 0), Vector2(1099.067, 596.372)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -55,10 +79,34 @@ tracks/1/path = NodePath("CanvasLayer/potato:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 20),
+"times": PackedFloat32Array(0, 9.953929),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(50, 50), Vector2(50, 50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/potato2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1099.995, 1.43), Vector2(0, 595.7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/potato2:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50.00061, 50), Vector2(50.00061, 50)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uqeha"]
@@ -149,6 +197,13 @@ texture = ExtResource("4_uqeha")
 [node name="potato" type="TextureRect" parent="CanvasLayer" unique_id=1229387220]
 offset_right = 50.0
 offset_bottom = 50.0
+texture = ExtResource("2_ob46e")
+
+[node name="potato2" type="TextureRect" parent="CanvasLayer" unique_id=1303853210]
+offset_left = 1099.995
+offset_top = 1.43
+offset_right = 1149.9956
+offset_bottom = 51.43
 texture = ExtResource("2_ob46e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=294893503]
