@@ -5,6 +5,7 @@ extends Object
 static var room_obj = preload("res://scenes/rooms/room.tscn")
 static var character_obj = preload("res://scenes/player/player_character.tscn")
 static var doppy_obj = preload("res://scenes/mini_games/doppy.tscn")
+static var aggressive_doppy_obj = preload("res://scenes/mini_games/aggressive_doppy.tscn")
 const ROOM_CENTRE = Vector2(550,550)
 
 static var door_positions = {
@@ -243,24 +244,35 @@ static func create_room(room_id: int, last_door_position: int):
 			doppy_count = 10
 		spawn_doppies(doppy_count, room, last_door_position, new_door_position)
 		GameState.doppy_room_visited = true
+	if room_id == 6:
+		spawn_aggresive_doppies(character, room, last_door_position, new_door_position)
 
 	return room
 
 static func spawn_doppies(count, room, last_door_position, new_door_position):
-		var last_spawn_position
-		var opposite_door = {
-			0: 1,
-			1: 0,
-			2: 3,
-			3: 2
-		}
-		if last_door_position == -1:
-			last_spawn_position = ROOM_CENTRE
-		else:
-			last_spawn_position = door_positions[opposite_door[new_door_position]]
+	var last_spawn_position
+	var opposite_door = {
+		0: 1,
+		1: 0,
+		2: 3,
+		3: 2
+	}
+	if last_door_position == -1:
+		last_spawn_position = ROOM_CENTRE
+	else:
+		last_spawn_position = door_positions[opposite_door[new_door_position]]
+	var doppy
+	for i in range(count):
+		doppy = doppy_obj.instantiate()
+		doppy.position = last_spawn_position
+		room.add_child(doppy)
+		last_spawn_position = Vector2(randi_range(408, 724), randi_range(350, 447))
+
+
+static func spawn_aggresive_doppies(character, room, last_door_position, new_door_position):
+	for i in range(5):
 		var doppy
-		for i in range(count):
-			doppy = doppy_obj.instantiate()
-			doppy.position = last_spawn_position
-			room.add_child(doppy)
-			last_spawn_position = Vector2(randi_range(408, 724), randi_range(350, 447))
+		doppy = aggressive_doppy_obj.instantiate()
+		doppy.player = character
+		doppy.position = Vector2(randi_range(408, 724), randi_range(350, 447))
+		room.add_child(doppy)
